@@ -10,7 +10,9 @@ import store from "./store/index.ts";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
+  <ContextProvider>
+    <BrowserRouter>
       <App />
-    </Provider>
-  </React.StrictMode>
+    </BrowserRouter>
+  </ContextProvider>
 );
