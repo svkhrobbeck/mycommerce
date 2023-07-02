@@ -24,7 +24,7 @@ const App: FC = (): JSX.Element => {
   return (
     <>
       <Header />
-      <main className="flex-grow-[1]">
+      <main className="flex-grow-[1] flex flex-col">
         <Router />
       </main>
       <Footer />
