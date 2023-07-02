@@ -1,6 +1,6 @@
 import { TypeSearchParams } from "../interfaces";
 
-const getUrlParams = (key: string, value: number | string, searchParams: TypeSearchParams, ...forDelete: string[]) => {
+const getUrlParams = (key: string, value: string, searchParams: TypeSearchParams[0], ...forDelete: string[]) => {
   searchParams.set(key, value);
 
   forDelete.forEach(param => searchParams.delete(param));
