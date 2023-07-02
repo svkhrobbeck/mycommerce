@@ -30,7 +30,11 @@ const App: FC = (): JSX.Element => {
     <>
       <Header />
       <main className="flex-grow-[1] flex flex-col">
-        {isLoading ? <div className={`${styles.container} py-4 md:py-6`}>Loading...</div> : <Router />}
+        {isLoading ? (
+          <div className={`${styles.container} py-4 md:py-6 text-2xl font-semibold uppercase text-center`}>Loading...</div>
+        ) : (
+          <Router />
+        )}
       </main>
       <Footer />
     </>
