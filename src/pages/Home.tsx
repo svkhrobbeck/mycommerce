@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useRef, ChangeEvent, Fragment } from "react";
+import { FC, useEffect, useState, useRef, ChangeEvent } from "react";
 import ProductsService from "../service/products";
 import { IParams, IProduct, IProductCategory } from "../interfaces";
 import { ProductCard, Tabs } from "../components";
@@ -61,7 +61,7 @@ const Home: FC = (): JSX.Element => {
 
   const handleSetCategory = (id: number) => {
     setCategoryId(id);
-    setSearchParams(getUrlParams("categoryId", id, searchParams));
+    setSearchParams(getUrlParams("categoryId", id.toString(), searchParams));
   };
 
   const changeMinVal = (e: ChangeEvent<HTMLInputElement>) => {
