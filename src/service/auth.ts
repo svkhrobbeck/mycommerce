@@ -18,6 +18,10 @@ const AuthService = {
     const { data } = await axios.get("auth/profile");
     return data;
   },
+  async userUpdate(id: number, user: IAuthUser) {
+    const { data } = await axios.put(`users/${id}`, { ...user });
+    return data;
+  },
 };
 
 export default AuthService;
