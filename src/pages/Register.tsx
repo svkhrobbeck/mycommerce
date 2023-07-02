@@ -43,13 +43,13 @@ const Register: React.FC = (): JSX.Element => {
           <CustomInput {...input} key={input.placeholder} />
         ))}
 
-        <input className="sr-only" accept="/" type="file" placeholder="Avatar" id="multiple_files" />
+        {/* <input className="sr-only" accept="/" type="file" placeholder="Avatar" id="multiple_files" />
         <label
           className="border text-sm rounded-lg outline-none  block w-full p-3 bg-gray-700  text-gray-400 text-[19px] mb-3"
           htmlFor="multiple_files"
         >
           Upload user avatar
-        </label>
+        </label> */}
 
         <button
           className="text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-3 text-center mb-3 bg-blue-600 hover:bg-blue-700 w-full"
