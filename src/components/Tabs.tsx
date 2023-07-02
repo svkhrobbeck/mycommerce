@@ -19,7 +19,7 @@ const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Ele
   };
 
   return (
-    <nav aria-label="Tabs">
+    <nav className="mb-[0.5px]" aria-label="Tabs">
       <div>
         <select
           className="block xs:hidden rounded border p-2 md:p-4 border-gray-300 [&_summary::-webkit-details-marker]:hidden w-full focus:outline-blue-700 text-gray-700 sm:text-sm"
@@ -35,11 +35,11 @@ const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Ele
           </optgroup>
         </select>
       </div>
-      <ul className="hidden xs:flex max-w-full border-b border-gray-200 text-center">
+      <ul className="hidden xs:flex max-w-full border-b border-gray-300 text-center">
         {categories.map(({ name, id }: IProductCategory) => (
           <Fragment key={id}>
             {categoryId === id ? (
-              <li className="flex-1 relative block border-e border-s border-t border-gray-200 bg-white p-2 lg:p-4 text-[12px] lg:text-[16px] font-medium">
+              <li className="flex-1 relative block border-e border-s border-t rounded-t border-gray-300 bg-white p-2 lg:p-4 text-[12px] lg:text-[16px] font-medium">
                 <span className="absolute inset-x-0 -bottom-px h-px w-full bg-white" />
                 {name}
               </li>
