@@ -6,5 +6,5 @@ export const styles: IStyles = {
   flexEnd: "flex justify-end items-center",
   flexCenter: "flex justify-center items-center",
   container: "max-w-[1440px] w-full mx-auto px-[20px]",
-  paragraph: "text-white text-[15px] leading-[1.5] font-medium",
+  paragraph: "text-white text-[15px] font-regular leading-[1.5] md:font-medium",
 };
