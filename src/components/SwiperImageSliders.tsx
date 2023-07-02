@@ -1,6 +1,6 @@
 import { FC, Fragment } from "react";
 import { SwiperSlide, Swiper } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Pagination, Scrollbar } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

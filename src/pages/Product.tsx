@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ProductsService from "../service/products";
 import { IParams, IProduct } from "../interfaces";
 import { styles } from "../constants/styles";
-import { ProductCard, ProductsList, SwiperImageSliders } from "../components";
+import { ProductsList, SwiperImageSliders } from "../components";
 import { CART_LOCALSTORAGE } from "../constants/constants";
 import { getStorageParse } from "../helpers/localStorage";
 import setToCart from "../helpers/setToCart";
