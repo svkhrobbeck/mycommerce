@@ -1,10 +1,10 @@
 import { styles } from "../constants/styles";
-import CustomInput from "../components/CustomInput";
 import { ChangeEvent, useState } from "react";
 import { IAuthUser, IAxiosResponse, ICustomInput } from "../interfaces";
 import AuthService from "../service/auth";
 import errorToString from "../helpers/errorToString";
 import { Link } from "react-router-dom";
+import { CustomInput } from "../components";
 
 const Register: React.FC = (): JSX.Element => {
   const [err, setErr] = useState<string | null>(null);
@@ -36,20 +36,12 @@ const Register: React.FC = (): JSX.Element => {
 
   return (
     <div className={`${styles.container} max-w-[800px] py-4 md:py-6`}>
-      <h2 className="text-center text-[36px] font-bold mb-4">Register</h2>
+      <h2 className="text-center text-[26px] md:text-[36px] font-bold mb-4">Register</h2>
 
       <form onSubmit={handleSubmit}>
         {inputs.map(input => (
           <CustomInput {...input} key={input.placeholder} />
         ))}
-
-        {/* <input className="sr-only" accept="/" type="file" placeholder="Avatar" id="multiple_files" />
-        <label
-          className="border text-sm rounded-lg outline-none  block w-full p-3 bg-gray-700  text-gray-400 text-[19px] mb-3"
-          htmlFor="multiple_files"
-        >
-          Upload user avatar
-        </label> */}
 
         <button
           className="text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-3 text-center mb-3 bg-blue-600 hover:bg-blue-700 w-full"
@@ -57,8 +49,8 @@ const Register: React.FC = (): JSX.Element => {
         >
           Register
         </button>
-        {err && <p className="text-[18px] mb-1 font-semibold text-red-600">{err}</p>}
-        <p className="text-[18px] font-semibold">
+        {err && <p className="text-[15px] md:text-[18px] mb-1 font-semibold text-red-600">{err}</p>}
+        <p className="text-[15px] md:text-[18px] font-semibold">
           Already Registered?{" "}
           <Link className="text-blue-600" to="/login">
             Login
