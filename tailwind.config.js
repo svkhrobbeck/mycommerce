@@ -3,8 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors: {},
-      fontFamily: {},
+      colors: {
+        dark: "#191919",
+      },
+      fontFamily: {
+        manrope: "Manrope, Arial, sans-serif",
+      },
     },
   },
   screens: {
