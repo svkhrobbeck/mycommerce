@@ -14,7 +14,7 @@ const CustomInput: FC<ICustomInput> = ({ type, placeholder, styles, value, setVa
       aria-label={placeholder}
       name={placeholder}
       onChange={handleChange}
-      className={`${styles} border text-sm rounded-lg outline-none  block w-full p-3 bg-gray-700  placeholder-gray-400 text-white text-[19px] mb-3`}
+      className={`${styles} border text-sm rounded-lg outline-none  block w-full p-2 md:p-3 bg-gray-700  placeholder-gray-400 text-white text-[19px] [&:not(:last-child)]:mb-3`}
     />
   );
 };
