@@ -1,5 +1,7 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, ChangeEvent, useState } from "react";
 import { IProductCategory } from "../interfaces";
+import { v4 as uuidv4 } from "uuid";
+import { useSearchParams } from "react-router-dom";
 
 interface ITabs {
   categories: IProductCategory[];
@@ -8,9 +10,32 @@ interface ITabs {
 }
 
 const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Element => {
+  const [searchParams] = useSearchParams();
+  const [selected, setSelected] = useState<number>(+(searchParams.get("category") || 1));
+
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelected(+e.target.value);
+    handleSetCategory(+e.target.value);
+  };
+
   return (
     <nav aria-label="Tabs">
-      <ul className="max-w-full overflow-x-auto md:overflow-x-visible flex border-b border-gray-200 text-center">
+      <div>
+        <select
+          className="block xs:hidden rounded border p-2 md:p-4 border-gray-300 [&_summary::-webkit-details-marker]:hidden w-full focus:outline-blue-700 text-gray-700 sm:text-sm"
+          value={selected}
+          onChange={handleChange}
+        >
+          <optgroup label="Categories">
+            {categories.map(category => (
+              <option value={category.id} key={category.updatedAt + uuidv4()}>
+                {category.name}
+              </option>
+            ))}
+          </optgroup>
+        </select>
+      </div>
+      <ul className="hidden xs:flex max-w-full border-b border-gray-200 text-center">
         {categories.map(({ name, id }: IProductCategory) => (
           <Fragment key={id}>
             {categoryId === id ? (
@@ -19,7 +44,10 @@ const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Ele
                 {name}
               </li>
             ) : (
-              <li className="flex-1 block p-2 lg:p-4 text-sm font-medium text-gray-500" onClick={() => handleSetCategory(id)}>
+              <li
+                className="flex-1 block p-2 lg:p-4 text-[12px] lg:text-[16px] font-medium text-gray-500"
+                onClick={() => handleSetCategory(id)}
+              >
                 {name}
               </li>
             )}
