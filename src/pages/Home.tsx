@@ -43,6 +43,7 @@ const Home: FC = (): JSX.Element => {
   }, [limit, params.title, params.price_min, params.price_max, categoryId]);
 
   const handleSetCategory = (id: number) => {
+    if (count > 1) setCount(1);
     setCategoryId(id);
     setSearchParams(getUrlParams("category", id.toString(), searchParams));
   };
@@ -51,9 +52,10 @@ const Home: FC = (): JSX.Element => {
     <section className={`${styles.py} ${styles.flexCol}  flex-grow-[1]`}>
       <div className={`${styles.py} ${styles.container} flex-grow-[1]`}>
         <h2 className="mb-4 lg:mb-8 sm:text-3xl text-xl text-center font-bold text-gray-900">Product Categories</h2>
+        <ProductFilterBar setCount={setCount} />
+
         <div className="lg:grid lg:grid-cols-4 lg:items-start lg:gap-8">
-          <ProductFilterBar />
-          <div className="mt-2 lg:mt-0 lg:col-span-3">
+          <div className="mt-2 lg:mt-0 lg:col-span-4">
             <Tabs categories={categories} categoryId={categoryId} handleSetCategory={handleSetCategory} />
             <ProductsList products={products} />
             {!!products.length && (
