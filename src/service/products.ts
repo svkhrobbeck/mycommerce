@@ -6,8 +6,8 @@ const ProductsService = {
     const { data } = await axios.get("products", { params });
     return data;
   },
-  async getProduct(id: string | null) {
-    const data = await axios.get(`products/${id}`);
+  async getProduct(id: string) {
+    const { data } = await axios.get(`products/${id}`);
     return data;
   },
   async getProductCategories() {
