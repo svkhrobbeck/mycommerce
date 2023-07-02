@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 // Pages
-import { Home, Login, PageNotFound, Product, Register, User } from "../pages";
+import { Cart, Home, Login, PageNotFound, Product, Register, User } from "../pages";
 
 const Router: FC = (): JSX.Element => {
   const token: string | null = localStorage.getItem("a@t#k$n");
@@ -17,6 +17,7 @@ const Router: FC = (): JSX.Element => {
       ) : (
         <>
           <Route path="/user" element={<User />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<Product />} />
         </>
       )}
