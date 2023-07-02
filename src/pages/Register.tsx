@@ -56,7 +56,7 @@ const Register: React.FC = (): JSX.Element => {
           {isLoading ? <span>Loading...</span> : <span>Register</span>}
           {isLoading && <img className="ml-[6px]" src={spinner} />}
         </button>
-        {err && <p className="text-[15px] md:text-[18px] mb-1 font-semibold text-red-600">{err}</p>}
+        {err && <p className="text-[15px] md:text-[18px] mb-1 font-semibold text-red-600">{err}.</p>}
         <p className="text-[15px] md:text-[18px] font-semibold">
           Already Registered?{" "}
           <Link className="text-blue-600" to="/login">
