@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export interface IStyles {
   flexBetween: string;
@@ -65,3 +66,34 @@ export interface IAxiosData {
   message: string;
   statusCode: number;
 }
+
+export interface IProduct {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  images: string[];
+  creationAt: string;
+  updatedAt: string;
+  image?: string;
+  category: IProductCategory;
+}
+
+export interface IProductCategory {
+  id: number;
+  name: string;
+  image: string;
+  creationAt: string;
+  updatedAt: string;
+}
+
+export interface IParams {
+  offset: number;
+  limit: number;
+  price_min: string | null;
+  price_max: string | null;
+  categoryId: number | null;
+  title: string | null;
+}
+
+export type TypeSearchParams = ReturnType<(typeof useSearchParams)[0]>;
