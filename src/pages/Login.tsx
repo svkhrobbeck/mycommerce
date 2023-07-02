@@ -1,11 +1,11 @@
 import { styles } from "../constants/styles";
-import CustomInput from "../components/CustomInput";
 import { ChangeEvent, useContext, useState } from "react";
 import { IAuth, IAuthUser, IAxiosResponse, ICustomInput } from "../interfaces";
 import AuthService from "../service/auth";
 import { Context } from "../context/Context";
 import { Link, useNavigate } from "react-router-dom";
 import errorToString from "../helpers/errorToString";
+import { CustomInput } from "../components";
 
 const Login: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ const Login: React.FC = (): JSX.Element => {
 
   return (
     <div className={`${styles.container} max-w-[800px] py-4 md:py-6`}>
-      <h2 className="text-center text-[36px] font-bold mb-4">Login</h2>
+      <h2 className="text-center text-[26px] md:text-[36px] font-bold mb-4">Login</h2>
 
       <form onSubmit={handleSubmit}>
         {inputs.map(input => (
@@ -50,8 +50,8 @@ const Login: React.FC = (): JSX.Element => {
         >
           Login
         </button>
-        {err && <p className="text-[18px] mb-1 font-semibold text-red-600">{err}</p>}
-        <p className="text-[18px] font-semibold">
+        {err && <p className="text-[15px] md:text-[18px] mb-1 font-semibold text-red-600">{err}</p>}
+        <p className="text-[15px] md:text-[18px] font-semibold">
           Not Registered?{" "}
           <Link className="text-blue-600" to="/register">
             Register
