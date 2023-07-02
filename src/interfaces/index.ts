@@ -70,9 +70,9 @@ export interface IAxiosResponse {
 }
 
 export interface IAxiosData {
-  [key: string]: string | number;
-  message: string;
+  message: string[];
   statusCode: number;
+  error: string;
 }
 
 export interface IProduct {

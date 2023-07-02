@@ -3,7 +3,6 @@ import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 import { styles } from "../constants/styles";
 import { CustomInput } from "../components";
-import { ICustomInput } from "../interfaces";
 const User: FC = (): JSX.Element => {
   const navigate = useNavigate();
   const { auth, setAuth } = useContext(Context);
@@ -29,8 +28,6 @@ const User: FC = (): JSX.Element => {
         <div className="mb-4 flex w-full items-center gap-4 flex-wrap">
           <img className="w-[80px] rounded-full" alt="Developer" src={auth?.user?.avatar} />
           <div>
-            <h3 className="text-lg font-medium text-white capitalize">{auth?.user?.name}</h3>
-            <p className="leading-none text-sm font-medium text-gray-300">{auth?.user?.role}</p>
           </div>
           <button className={`${styles.buttonGreen} ml-auto self-center flex-grow-[1] xs:flex-grow-0`} onClick={handleLogoutClick}>
             Logout
