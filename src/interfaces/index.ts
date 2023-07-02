@@ -8,6 +8,12 @@ export interface IStyles {
   flexCenter: string;
   container: string;
   paragraph: string;
+  flexCol: string;
+  py: string;
+  buttonPurpleOutlined: string;
+  buttonPurple: string;
+  buttonYellow: string;
+  badgeYellow: string;
 }
 
 export interface ISocials {
@@ -71,12 +77,11 @@ export interface IProduct {
   id: number;
   title: string;
   price: number;
-  description: string;
+  description?: string;
   images: string[];
-  creationAt: string;
-  updatedAt: string;
-  image?: string;
-  category: IProductCategory;
+  creationAt?: string;
+  updatedAt?: string;
+  category?: IProductCategory;
 }
 
 export interface IProductCategory {
@@ -88,12 +93,12 @@ export interface IProductCategory {
 }
 
 export interface IParams {
-  offset: number;
-  limit: number;
-  price_min: string | null;
-  price_max: string | null;
-  categoryId: number | null;
-  title: string | null;
+  offset?: number;
+  limit?: number;
+  price_min?: string | null;
+  price_max?: string | null;
+  categoryId?: number | null;
+  title?: string | null;
 }
 
 export type TypeSearchParams = ReturnType<typeof useSearchParams>;
