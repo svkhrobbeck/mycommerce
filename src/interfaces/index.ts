@@ -96,4 +96,4 @@ export interface IParams {
   title: string | null;
 }
 
-export type TypeSearchParams = ReturnType<(typeof useSearchParams)[0]>;
+export type TypeSearchParams = ReturnType<typeof useSearchParams>;
