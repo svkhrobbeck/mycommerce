@@ -6,12 +6,14 @@ import { Context } from "../context/Context";
 import { Link, useNavigate } from "react-router-dom";
 import errorToString from "../helpers/errorToString";
 import { CustomInput } from "../components";
+import { spinner } from "../assets/icons";
 
 const Login: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
   const [err, setErr] = useState<string | null>(null);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setAuth } = useContext(Context);
 
   const inputs: ICustomInput[] = [
@@ -22,6 +24,7 @@ const Login: React.FC = (): JSX.Element => {
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setIsLoading(true);
     const user: IAuthUser = { email, password };
     try {
       const { access_token }: { access_token: string } = await AuthService.userLogin(user);
@@ -32,6 +35,8 @@ const Login: React.FC = (): JSX.Element => {
     } catch (err) {
       const error = err as IAxiosResponse;
       setErr(errorToString(error?.response?.data));
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -45,10 +50,12 @@ const Login: React.FC = (): JSX.Element => {
         ))}
 
         <button
-          className="text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-3 mb-3 text-center bg-blue-600 hover:bg-blue-700 w-full"
+          className={`${styles.flexCenter} text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-3 mb-3 text-center bg-blue-600 hover:bg-blue-700 w-full`}
           type="submit"
+          disabled={isLoading}
         >
-          Login
+          {isLoading ? <span>Loading...</span> : <span>Login</span>}
+          {isLoading && <img className="ml-[6px]" src={spinner} />}
         </button>
         {err && <p className="text-[15px] md:text-[18px] mb-1 font-semibold text-red-600">{err}</p>}
         <p className="text-[15px] md:text-[18px] font-semibold">
