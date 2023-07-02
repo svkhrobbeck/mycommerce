@@ -1,10 +1,11 @@
 import { IAxiosData } from "../interfaces";
 
 const errorToString = (obj: IAxiosData): string => {
-  const keys: string[] = Object.keys(obj);
+  let text: string = `${obj.error}: `;
 
-  let text: string = "Error message:";
-  keys.forEach((key: string) => (text += ` ${obj[key]}`));
+  text += `${obj.statusCode}! `;
+  text += obj.message.join(", ");
+
   return text;
 };
 
