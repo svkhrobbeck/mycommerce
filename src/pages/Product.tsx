@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProductsService from "../service/products";
 import { IParams, IProduct } from "../interfaces";
 import { styles } from "../constants/styles";
@@ -9,6 +9,7 @@ import { getStorageParse } from "../helpers/localStorage";
 import setToCart from "../helpers/setToCart";
 
 const Product: FC = (): JSX.Element => {
+  const navigate = useNavigate();
   const [keys, setKeys] = useState<number[]>(getStorageParse(CART_LOCALSTORAGE));
   const { id } = useParams();
   const [product, setProduct] = useState<IProduct | null>(null);
@@ -47,8 +48,11 @@ const Product: FC = (): JSX.Element => {
             <p className="mb-1.5 max-w-[390px] text-md text-gray-500">{product?.description}</p>
             <p className="max-w-[390px] mb-2 font-semibold text-xl text-gray-800">Price: ${product?.price}</p>
             <SwiperImageSliders images={product.images} isOne={false} />
-            <button className={`${styles.buttonYellow} hover:scale-[1.02]`} onClick={addToCart}>
+            <button className={`${styles.buttonYellow}`} onClick={addToCart}>
               {keys.includes(Number(id)) ? "Added" : "Add to Cart"}
+            </button>
+            <button className={`${styles.buttonGreen} w-full`} onClick={() => navigate("/")}>
+              Back to Home
             </button>
           </>
         )}
