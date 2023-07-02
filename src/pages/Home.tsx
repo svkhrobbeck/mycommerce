@@ -14,8 +14,7 @@ const Home: FC = (): JSX.Element => {
   const [count, setCount] = useState(1);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [categories, setCategories] = useState<IProductCategory[]>([]);
-  const [categoryId, setCategoryId] = useState<number>(1);
-  // const [title, setTitle] = useState<string | null>(null);
+  const [categoryId, setCategoryId] = useState<number>(+(searchParams.get("category") || 1));
   const limit: number = PAGINATION_LIMIT * count;
   let timeoutId = useRef<ReturnType<typeof setTimeout>>();
 
@@ -24,7 +23,7 @@ const Home: FC = (): JSX.Element => {
     limit,
     price_min: searchParams.get("price_min") || null,
     price_max: searchParams.get("price_max") || null,
-    categoryId: +(searchParams.get("categoryId") || categoryId),
+    categoryId: +(searchParams.get("category") || categoryId),
     title: searchParams.get("title") || null,
   };
 
@@ -61,7 +60,7 @@ const Home: FC = (): JSX.Element => {
 
   const handleSetCategory = (id: number) => {
     setCategoryId(id);
-    setSearchParams(getUrlParams("categoryId", id.toString(), searchParams));
+    setSearchParams(getUrlParams("category", id.toString(), searchParams));
   };
 
   const changeMinVal = (e: ChangeEvent<HTMLInputElement>) => {
