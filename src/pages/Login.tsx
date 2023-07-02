@@ -18,7 +18,7 @@ const Login: React.FC = (): JSX.Element => {
 
   const inputs: ICustomInput[] = [
     { type: "text", placeholder: "Email", styles: "", value: email, setValue: setEmail },
-    { type: "text", placeholder: "Password", styles: "", value: password, setValue: setPassword },
+    { type: "password", placeholder: "Password", styles: "", value: password, setValue: setPassword },
   ];
 
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {

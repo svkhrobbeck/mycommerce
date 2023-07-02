@@ -14,6 +14,8 @@ export interface IStyles {
   buttonPurple: string;
   buttonYellow: string;
   badgeYellow: string;
+  buttonGreen: string;
+  buttonLightGray: string;
 }
 
 export interface ISocials {

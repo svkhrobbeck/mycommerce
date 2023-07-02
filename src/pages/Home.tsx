@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 import getUrlParams from "../helpers/getUrlParams";
 
 const Home: FC = (): JSX.Element => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [count, setCount] = useState<number>(1);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [categories, setCategories] = useState<IProductCategory[]>([]);
