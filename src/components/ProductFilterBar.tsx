@@ -23,12 +23,12 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
     }, 500);
   };
 
-  const priceValsReset = () => {
-    setMin("");
-    setMax("");
-    setCount(1);
-    setSearchParams(getUrlParams("", "", searchParams, "price_max", "price_min", "title"));
-  };
+  // const priceValsReset = () => {
+  //   setMin("");
+  //   setMax("");
+  //   setCount(1);
+  //   setSearchParams(getUrlParams("", "", searchParams, "price_max", "price_min", "title"));
+  // };
 
   const changeClearMinVal = (e: ChangeEvent<HTMLInputElement>) => {
     setMin(e.target.value);
