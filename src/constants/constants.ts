@@ -3,6 +3,8 @@ import { iconFacebook, iconInstagram, iconTwitter } from "../assets/icons";
 
 export const BASE_API_URL: string = "https://api.escuelajs.co/api/v1/";
 
+export const PAGINATION_LIMIT: number = 9;
+
 export const socials: ISocials[] = [
   {
     icon: iconFacebook,
