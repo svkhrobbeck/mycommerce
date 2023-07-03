@@ -1,42 +1,18 @@
-import { FC, useEffect, useState, useContext } from "react";
+import { FC, useEffect, useState } from "react";
 import ProductsService from "../service/products";
 import { IParams, IProduct, IProductCategory } from "../interfaces";
 import { Loader, ProductFilterBar, ProductsList, Tabs } from "../components";
-import { PAGINATION_LIMIT, TOKEN_LOCALSTORAGE } from "../constants/constants";
+import { PAGINATION_LIMIT } from "../constants/constants";
 import { styles } from "../constants/styles";
 import { useSearchParams } from "react-router-dom";
 import getUrlParams from "../helpers/getUrlParams";
-import { Context } from "../context/Context";
-import AuthService from "../service/auth";
-import { removeStorage } from "../helpers/localStorage";
-
 const Home: FC = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [count, setCount] = useState<number>(1);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [categories, setCategories] = useState<IProductCategory[]>([]);
   const [categoryId, setCategoryId] = useState<number>(+(searchParams.get("category") || 1));
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { setAuth } = useContext(Context);
   const limit: number = PAGINATION_LIMIT * count;
-
-  const getUser = async () => {
-    setIsLoading(true);
-    try {
-      const user = await AuthService.userGet();
-      setAuth(prev => ({ ...prev, user }));
-    } catch (error) {
-      console.log(error);
-      setAuth({ token: null, user: null, modal: false });
-      removeStorage(TOKEN_LOCALSTORAGE);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getUser();
-  }, []);
 
   const params: IParams = {
     offset: 0,
@@ -47,14 +23,20 @@ const Home: FC = (): JSX.Element => {
     title: searchParams.get("title") || null,
   };
 
-  const getCategories = async () => {
-    const categories = await ProductsService.getProductCategories();
-    setCategories(categories);
+  const handleSetCategory = (id: number) => {
+    if (count > 1) setCount(1);
+    setCategoryId(id);
+    setSearchParams(getUrlParams("category", id.toString(), searchParams));
   };
 
   const getProducts = async () => {
     const data: IProduct[] = await ProductsService.getProducts(params);
     setProducts(data);
+  };
+
+  const getCategories = async () => {
+    const categories = await ProductsService.getProductCategories();
+    setCategories(categories);
   };
 
   useEffect(() => {
@@ -65,15 +47,9 @@ const Home: FC = (): JSX.Element => {
     getCategories();
   }, [categoryId]);
 
-  const handleSetCategory = (id: number) => {
-    if (count > 1) setCount(1);
-    setCategoryId(id);
-    setSearchParams(getUrlParams("category", id.toString(), searchParams));
-  };
-
   return (
     <>
-      {!!(products.length && !isLoading) ? (
+      {!!products.length ? (
         <section className={`${styles.py} ${styles.flexCol}  flex-grow-[1]`}>
           <div className={`${styles.py} ${styles.container} flex-grow-[1]`}>
             <h2 className="mb-4 lg:mb-8 sm:text-3xl text-xl text-center font-bold text-gray-900">Product Categories</h2>
