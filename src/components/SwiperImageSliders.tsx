@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC } from "react";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Pagination, Scrollbar } from "swiper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
