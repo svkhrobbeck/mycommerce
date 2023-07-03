@@ -61,7 +61,7 @@ const Home: FC = (): JSX.Element => {
                 <ProductsList products={products} />
                 <div className="text-center">
                   <button className={`${styles.buttonPurpleOutlined}`} onClick={() => setCount(products.length ? count + 1 : 1)}>
-                    Download
+                    Load More
                   </button>
                 </div>
               </div>
