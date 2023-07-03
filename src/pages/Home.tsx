@@ -16,8 +16,6 @@ const Home: FC = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
   const limit: number = PAGINATION_LIMIT * count;
 
-  console.log(isLoading);
-
   const params: IParams = {
     offset: 0,
     limit,
