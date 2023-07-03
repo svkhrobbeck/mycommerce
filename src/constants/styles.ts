@@ -17,4 +17,9 @@ export const styles: IStyles = {
   badgeYellow: "whitespace-nowrap mb-3 inline-block bg-yellow-400 px-[12px] py-[6px] text-xs font-medium",
   buttonGreen: "block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700",
   buttonLightGray: "rounded-md bg-gray-100 px-5 py-3 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 block",
+  buttonDarkGray: "rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600",
+  customInput:
+    "lowercase border text-sm rounded-lg outline-none  block w-full p-2 pe-10 md:p-3 bg-gray-700 border-gray-300 focus:border-gray-500 placeholder-gray-400 text-white text-[19px]",
+  borderGray: "border border-gray-300 rounded focus:border-gray-500 outline-none",
+  borderGrayNotRounded: "border border-gray-300 focus:border-gray-500 outline-none",
 };
