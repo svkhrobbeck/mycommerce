@@ -1,11 +1,14 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useContext } from "react";
 import ProductsService from "../service/products";
 import { IParams, IProduct, IProductCategory } from "../interfaces";
 import { Loader, ProductFilterBar, ProductsList, Tabs } from "../components";
-import { PAGINATION_LIMIT } from "../constants/constants";
+import { PAGINATION_LIMIT, TOKEN_LOCALSTORAGE } from "../constants/constants";
 import { styles } from "../constants/styles";
 import { useSearchParams } from "react-router-dom";
 import getUrlParams from "../helpers/getUrlParams";
+import { Context } from "../context/Context";
+import AuthService from "../service/auth";
+import { removeStorage } from "../helpers/localStorage";
 
 const Home: FC = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -13,7 +16,27 @@ const Home: FC = (): JSX.Element => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [categories, setCategories] = useState<IProductCategory[]>([]);
   const [categoryId, setCategoryId] = useState<number>(+(searchParams.get("category") || 1));
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { setAuth } = useContext(Context);
   const limit: number = PAGINATION_LIMIT * count;
+
+  const getUser = async () => {
+    setIsLoading(true);
+    try {
+      const user = await AuthService.userGet();
+      setAuth(prev => ({ ...prev, user }));
+    } catch (error) {
+      console.log(error);
+      setAuth({ token: null, user: null, modal: false });
+      removeStorage(TOKEN_LOCALSTORAGE);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const params: IParams = {
     offset: 0,
@@ -35,12 +58,12 @@ const Home: FC = (): JSX.Element => {
   };
 
   useEffect(() => {
-    getCategories();
-  }, [categoryId]);
-
-  useEffect(() => {
     getProducts();
   }, [limit, params.title, params.price_min, params.price_max, categoryId]);
+
+  useEffect(() => {
+    getCategories();
+  }, [categoryId]);
 
   const handleSetCategory = (id: number) => {
     if (count > 1) setCount(1);
@@ -50,7 +73,7 @@ const Home: FC = (): JSX.Element => {
 
   return (
     <>
-      {!!products.length ? (
+      {!!(products.length && !isLoading) ? (
         <section className={`${styles.py} ${styles.flexCol}  flex-grow-[1]`}>
           <div className={`${styles.py} ${styles.container} flex-grow-[1]`}>
             <h2 className="mb-4 lg:mb-8 sm:text-3xl text-xl text-center font-bold text-gray-900">Product Categories</h2>
