@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import ProductsService from "../service/products";
 import { IParams, IProduct, IProductCategory } from "../interfaces";
-import { ProductFilterBar, ProductsList, Tabs } from "../components";
+import { Loader, ProductFilterBar, ProductsList, Tabs } from "../components";
 import { PAGINATION_LIMIT } from "../constants/constants";
 import { styles } from "../constants/styles";
 import { useSearchParams } from "react-router-dom";
