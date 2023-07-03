@@ -11,7 +11,6 @@ interface ICartItem {
 
 const CartItem: FC<ICartItem> = ({ cart, setCarts }): JSX.Element => {
   const [value, setValue] = useState<number>(typeof cart?.count === "number" ? cart?.count : 1);
-  
 
   const updateCart = (count: number) => {
     const newCart: IProduct = { ...cart, count };
@@ -47,7 +46,7 @@ const CartItem: FC<ICartItem> = ({ cart, setCarts }): JSX.Element => {
               updateCart(value - 1);
               setValue(p => p - 1);
             }}
-            className="w-6 h-6 md:w-10 md:h-10 disabled:opacity-60 leading-6  leading-10 text-gray-600 transition hover:opacity-75"
+            className="w-6 h-6 md:w-10 md:h-10 disabled:opacity-60 leading-6  md:leading-10 text-gray-600 transition hover:opacity-75"
           >
             −
           </button>
