@@ -21,3 +21,5 @@ export const socials: ISocials[] = [
     link: "https://instagram.com",
   },
 ];
+
+export const countries: string[] = ["Uzbekistan", "Kazakhstan", "Tajikistan", "Turkey", "China", "Korea"];
