@@ -1,6 +1,8 @@
 import { FC, Fragment } from "react";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Pagination, Scrollbar } from "swiper";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -43,19 +45,11 @@ const SwiperImageSliders: FC<ISwiperImageSliders> = ({ images, styles = "", isOn
       }
     >
       {images.map((image: string) => (
-        <Fragment key={image + uuidv4()}>
-          {isOne ? (
-            <SwiperSlide key={image + uuidv4()}>
-              <img src={image} className={`${styles} ${imageStyles}`} />
-            </SwiperSlide>
-          ) : (
-            <>
-              <SwiperSlide key={image + uuidv4()}>
-                <img src={image} className={`${styles} ${imageStyles}`} />
-              </SwiperSlide>
-            </>
-          )}
-        </Fragment>
+        <SwiperSlide key={image + uuidv4()}>
+          <div className={`${imageStyles} ${styles}`}>
+            <LazyLoadImage width={"100%"} height={"auto"} src={image} loading="lazy" effect="blur" />
+          </div>
+        </SwiperSlide>
       ))}
     </Swiper>
   );
