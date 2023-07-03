@@ -4,7 +4,7 @@ import { IAuthUser, IAxiosResponse, ICustomInput } from "../interfaces";
 import AuthService from "../service/auth";
 import errorToString from "../helpers/errorToString";
 import { Link, useNavigate } from "react-router-dom";
-import { CustomInput } from "../components";
+import { CustomInput, Modal } from "../components";
 import { spinner } from "../assets";
 
 const Register: React.FC = (): JSX.Element => {
@@ -14,6 +14,9 @@ const Register: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleClose = () => setIsOpen(false);
 
   const inputs: ICustomInput[] = [
     { type: "text", placeholder: "Full Name", styles: "", value: name, setValue: setName },
@@ -35,7 +38,7 @@ const Register: React.FC = (): JSX.Element => {
 
       if (check?.isAvailable) throw new Error("Email already exist");
       await AuthService.userRegister(user);
-      navigate("/");
+      setIsOpen(true);
     } catch (err) {
       const error = err as IAxiosResponse;
       setErr(errorToString(error?.response?.data));
@@ -69,6 +72,16 @@ const Register: React.FC = (): JSX.Element => {
           </Link>
         </p>
       </form>
+      <Modal handleClose={handleClose} type="notification" isOpen={isOpen}>
+        <div className="text-center">
+          <p className="text-green-600 mb-3 font-medium text-sm xs:text-md md:text-lg">
+            You have successfully registered. Please log in to proceed.
+          </p>
+          <button className={`${styles.buttonGreen} mx-auto`} onClick={() => navigate("/")}>
+            Login
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };
