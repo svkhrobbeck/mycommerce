@@ -6,7 +6,7 @@ import { Context } from "../context/Context";
 import { Link, useNavigate } from "react-router-dom";
 import errorToString from "../helpers/errorToString";
 import { CustomInput } from "../components";
-import { spinner } from "../assets/icons";
+import { spinner } from "../assets";
 
 const Login: React.FC = (): JSX.Element => {
   const navigate = useNavigate();

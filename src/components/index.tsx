@@ -9,3 +9,4 @@ export { default as SwiperImageSliders } from "./SwiperImageSliders";
 export { default as Loader } from "./Loader";
 export { default as CartItem } from "./CartItem";
 export { default as CheckoutModal } from "./CheckoutModal";
+export { default as ProductsNotFound } from "./ProductsNotFound";

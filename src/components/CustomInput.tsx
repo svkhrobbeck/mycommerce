@@ -1,6 +1,6 @@
 import { FC, ChangeEvent, useState } from "react";
 import { ICustomInput } from "../interfaces";
-import { iconEye, iconEyeSlash } from "../assets/icons";
+import { iconEye, iconEyeSlash } from "../assets";
 import { styles as globalStyles } from "../constants/styles";
 
 const CustomInput: FC<ICustomInput> = ({ type, placeholder, styles, value, setValue }): JSX.Element => {

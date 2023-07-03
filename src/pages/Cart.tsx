@@ -5,8 +5,10 @@ import { IProduct } from "../interfaces";
 import { CartItem, CheckoutModal } from "../components";
 import { styles } from "../constants/styles";
 import { Context } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 const Cart: FC = (): JSX.Element => {
+  const navigate = useNavigate();
   const { setAuth } = useContext(Context);
   const [carts, setCarts] = useState<IProduct[]>(getStorageParse(CART_LOCALSTORAGE));
   const total: number = carts.reduce((a, b) => a + (b.count || 0) * (b?.price || 0), 0);

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { loader } from "../assets/icons";
+import { loader } from "../assets";
 import { styles } from "../constants/styles";
 
 const Loader: FC = (): JSX.Element => {

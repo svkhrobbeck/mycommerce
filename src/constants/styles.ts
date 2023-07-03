@@ -5,7 +5,7 @@ export const styles: IStyles = {
   flexStart: "flex justify-start items-center",
   flexEnd: "flex justify-end items-center",
   flexCenter: "flex justify-center items-center",
-  container: "max-w-[1440px] w-full mx-auto px-[20px]",
+  container: "max-w-[1460px] w-full mx-auto px-[20px]",
   flexCol: "flex flex-col",
   paragraph: "text-white text-[13px] sm:text-[14px] md:text-[15px] font-regular leading-[1.3] md:font-medium",
   py: "py-4 md:py-6",

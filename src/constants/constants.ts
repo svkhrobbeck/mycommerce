@@ -1,5 +1,5 @@
 import { ISocials } from "../interfaces";
-import { iconFacebook, iconInstagram, iconTwitter } from "../assets/icons";
+import { iconFacebook, iconInstagram, iconTwitter } from "../assets";
 
 export const BASE_API_URL: string = "https://api.escuelajs.co/api/v1/";
 

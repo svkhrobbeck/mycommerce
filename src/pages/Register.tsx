@@ -5,7 +5,7 @@ import AuthService from "../service/auth";
 import errorToString from "../helpers/errorToString";
 import { Link, useNavigate } from "react-router-dom";
 import { CustomInput } from "../components";
-import { spinner } from "../assets/icons";
+import { spinner } from "../assets";
 
 const Register: React.FC = (): JSX.Element => {
   const navigate = useNavigate();

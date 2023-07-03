@@ -5,7 +5,7 @@ import { SwiperImageSliders } from ".";
 import { IProduct } from "../interfaces";
 import { CART_LOCALSTORAGE } from "../constants/constants";
 import { getStorageParse } from "../helpers/localStorage";
-import { iconStar, iconWhiteStar } from "../assets/icons";
+import { iconStar, iconWhiteStar } from "../assets";
 import toggleCart from "../helpers/toggleCart";
 
 const ProductCard: FC<IProduct> = ({ id, images, title, price }): JSX.Element => {
@@ -20,7 +20,7 @@ const ProductCard: FC<IProduct> = ({ id, images, title, price }): JSX.Element =>
   }, [carts]);
 
   return (
-    <div className={`${styles.borderGray} p-3 select-none`}>
+    <div className={`${styles.borderGray} p-1 sm:p-2 md:p-3 select-none`}>
       <div className="hidden sm:block">
         <SwiperImageSliders images={images || []} />
       </div>
