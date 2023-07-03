@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: () => ({
+        "bg-image-empty": 'url("images/simoncat-empty.svg")',
+      }),
       colors: {
         dark: "#191919",
       },
