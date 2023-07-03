@@ -70,11 +70,11 @@ const User: FC = (): JSX.Element => {
           {inputs.map(input => (
             <CustomInput key={input.placeholder} {...input} />
           ))}
-          <div className={`${styles.flexEnd} gap-3`}>
-            <button className={`${styles.buttonLightGray} flex-grow-[1] sm:flex-grow-0`} onClick={() => navigate("/")}>
+          <div className={`${styles.flexEnd} flex-col xs:flex-row gap-3`}>
+            <button className={`${styles.buttonLightGray} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`} onClick={() => navigate("/")}>
               Back to Home
             </button>
-            <button className={`${styles.buttonPurpleOutlined} flex-grow-[1] sm:flex-grow-0`} disabled={isLoading}>
+            <button className={`${styles.buttonPurpleOutlined} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`} disabled={isLoading}>
               {isLoading ? "Loading..." : "Save"}
             </button>
           </div>
