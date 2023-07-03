@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: () => ({
-        "bg-image-empty": 'url("images/simoncat-empty.svg")',
+        "bg-image-empty": 'url("./images/simoncat-empty.svg")',
       }),
       colors: {
         dark: "#191919",
