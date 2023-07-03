@@ -1,7 +1,8 @@
 import { FC, createContext, useState } from "react";
 import { IAuth, IChildren, IContextType } from "../interfaces";
+import { getStorage } from "../helpers/localStorage";
 
-const initialValue: IAuth = { token: null, user: null };
+const initialValue: IAuth = { token: getStorage("a@t#k$n") || null, user: null, modal: false };
 
 export const Context = createContext<IContextType>({ auth: initialValue, setAuth: () => {} });
 
