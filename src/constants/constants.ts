@@ -7,6 +7,8 @@ export const PAGINATION_LIMIT: number = 9;
 
 export const CART_LOCALSTORAGE = "$c@rt";
 
+export const TOKEN_LOCALSTORAGE = "a@t#k$n";
+
 export const socials: ISocials[] = [
   {
     icon: iconFacebook,
