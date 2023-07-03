@@ -7,6 +7,7 @@ import { IAxiosResponse, ICustomInput } from "../interfaces";
 import AuthService from "../service/auth";
 import errorToString from "../helpers/errorToString";
 import { TOKEN_LOCALSTORAGE } from "../constants/constants";
+import { removeStorage } from "../helpers/localStorage";
 
 const User: FC = (): JSX.Element => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const User: FC = (): JSX.Element => {
   ];
 
   const handleLogoutClick = () => {
-    localStorage.removeItem(TOKEN_LOCALSTORAGE);
+    removeStorage(TOKEN_LOCALSTORAGE);
     setAuth({});
     navigate("/login");
   };
