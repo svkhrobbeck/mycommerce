@@ -16,6 +16,10 @@ export interface IStyles {
   badgeYellow: string;
   buttonGreen: string;
   buttonLightGray: string;
+  buttonDarkGray: string;
+  customInput: string;
+  borderGray: string;
+  borderGrayNotRounded: string;
 }
 
 export interface ISocials {
@@ -41,6 +45,7 @@ export interface IUser {
 export interface IAuth {
   token?: string | null;
   user?: IUser | null;
+  modal?: boolean;
 }
 
 export interface IContextType {
@@ -76,14 +81,15 @@ export interface IAxiosData {
 }
 
 export interface IProduct {
-  id: number;
-  title: string;
-  price: number;
+  id?: number;
+  title?: string;
+  price?: number;
   description?: string;
-  images: string[];
+  images?: string[];
   creationAt?: string;
   updatedAt?: string;
   category?: IProductCategory;
+  count?: number;
 }
 
 export interface IProductCategory {
@@ -104,3 +110,5 @@ export interface IParams {
 }
 
 export type TypeSearchParams = ReturnType<typeof useSearchParams>;
+
+export type TypeStateSetter = Dispatch<React.SetStateAction<IProduct[]>>;
