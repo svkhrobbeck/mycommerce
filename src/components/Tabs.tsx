@@ -20,33 +20,32 @@ const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Ele
   };
 
   return (
-    <nav className="mb-[0.5px]" aria-label="Tabs">
-      <div>
-        <select
-          className={`${styles.borderGray} block xs:hidden [&_summary::-webkit-details-marker]:hidden w-full text-gray-700 sm:text-sm p-1`}
-          value={selected}
-          onChange={handleChange}
-        >
-          <optgroup label="Categories">
-            {categories.map(category => (
-              <option value={category.id} key={category.updatedAt + uuidv4()}>
-                {category.name}
-              </option>
-            ))}
-          </optgroup>
-        </select>
-      </div>
+    <nav className="overflow-x-auto sm:overflow-x-visible" aria-label="Tabs">
+      <select
+        className={`${styles.borderGray} block xs:hidden [&_summary::-webkit-details-marker]:hidden w-full text-gray-700 sm:text-sm p-1`}
+        value={selected}
+        onChange={handleChange}
+      >
+        <optgroup label="Categories">
+          {categories.map(category => (
+            <option value={category.id} key={category.updatedAt + uuidv4()}>
+              {category.name}
+            </option>
+          ))}
+        </optgroup>
+      </select>
+
       <ul className="hidden xs:flex max-w-full border-b border-gray-300 text-center">
         {categories.map(({ name, id }: IProductCategory) => (
           <Fragment key={id}>
             {categoryId === id ? (
-              <li className="flex-1 relative block border-e border-s border-t rounded-t border-gray-300 bg-white p-2 lg:p-4 text-[12px] lg:text-[16px] font-medium">
+              <li className="flex-1 whitespace-nowrap cursor-pointer relative block border-e border-s border-t rounded-t border-gray-300 bg-white p-2 lg:p-4 text-[12px] lg:text-[16px] font-medium">
                 <span className="absolute inset-x-0 -bottom-px h-px w-full bg-white" />
                 {name}
               </li>
             ) : (
               <li
-                className="flex-1 block p-2 lg:p-4 text-[12px] lg:text-[16px] font-medium text-gray-500"
+                className="flex-1  whitespace-nowrap cursor-pointer block p-2 lg:p-4 text-[12px] lg:text-[16px] font-medium text-gray-500"
                 onClick={() => handleSetCategory(id)}
               >
                 {name}
