@@ -33,9 +33,8 @@ const Footer: FC = (): JSX.Element => {
           <p
             className={`${styles.paragraph} opacity-50 md:text-center lg:text-left mb-[10px] max-w-none sm:msx-w-[700px] md:max-w-[800px]`}
           >
-            MyCommerce is an all-in-one solution designed to meet all your needs. Our dedicated team of professionals is committed to
-            ensuring that you have a fulfilling and rewarding personal shopping experience. We invite you to visit our demo facility, which
-            is open seven days a week, to explore the full range of features and benefits our solution offers.
+            Our team at MyCommerce ensures a complete and rewarding personal shopping experience, addressing all your needs. With our open
+            availability seven days a week, you can enjoy the full range of features and benefits we offer.
           </p>
 
           <div className="flex items-center gap-2 md:gap-4 w-full md:w-auto">
