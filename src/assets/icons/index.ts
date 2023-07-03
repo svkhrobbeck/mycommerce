@@ -6,3 +6,6 @@ export { default as iconInstagram } from "./icon-instagram.svg";
 export { default as spinner } from "./spinner.svg";
 export { default as iconStar } from "./star.svg";
 export { default as iconWhiteStar } from "./white-star.svg";
+export { default as loader } from "./loader.svg";
+export { default as iconEye } from "./eye.svg";
+export { default as iconEyeSlash } from "./eye-slash.svg";

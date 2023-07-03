@@ -1,10 +1,10 @@
 import { FC, useContext, useEffect, useState } from "react";
 import "./service/axios";
-import { Footer, Header } from "./components";
+import { Footer, Header, Loader } from "./components";
 import Router from "./router/Router";
 import AuthService from "./service/auth";
 import { Context } from "./context/Context";
-import { styles } from "./constants/styles";
+import { removeStorage } from "./helpers/localStorage";
 
 const App: FC = (): JSX.Element => {
   const { setAuth } = useContext(Context);
@@ -17,6 +17,8 @@ const App: FC = (): JSX.Element => {
       setAuth(prev => ({ ...prev, user }));
     } catch (error) {
       console.log(error);
+      setAuth({ token: null, user: null, modal: false });
+      removeStorage("a@t#k$n");
     } finally {
       setIsLoading(false);
     }
@@ -29,13 +31,7 @@ const App: FC = (): JSX.Element => {
   return (
     <>
       <Header />
-      <main className="flex-grow-[1] flex flex-col">
-        {isLoading ? (
-          <div className={`${styles.container} py-4 md:py-6 text-2xl font-semibold uppercase text-center`}>Loading...</div>
-        ) : (
-          <Router />
-        )}
-      </main>
+      <main className="flex-grow-[1] flex flex-col">{isLoading ? <Loader /> : <Router />}</main>
       <Footer />
     </>
   );

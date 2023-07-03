@@ -9,9 +9,9 @@ import errorToString from "../helpers/errorToString";
 const User: FC = (): JSX.Element => {
   const navigate = useNavigate();
   const { auth, setAuth } = useContext(Context);
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>(auth?.user?.email || "");
+  const [password, setPassword] = useState<string>(auth?.user?.password || "");
+  const [name, setName] = useState<string>(auth?.user?.name || "");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [err, setErr] = useState<string | null>(null);
 
