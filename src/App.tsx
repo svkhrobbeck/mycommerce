@@ -4,7 +4,7 @@ import { Footer, Header, Loader } from "./components";
 import Router from "./router/Router";
 import AuthService from "./service/auth";
 import { Context } from "./context/Context";
-import { removeStorage } from "./helpers/localStorage";
+import { getStorage, removeStorage } from "./helpers/localStorage";
 
 const App: FC = (): JSX.Element => {
   const { setAuth } = useContext(Context);
@@ -25,7 +25,7 @@ const App: FC = (): JSX.Element => {
   };
 
   useEffect(() => {
-    getUser();
+    if (getStorage("a@t#k$n")) getUser();
   }, []);
 
   return (
