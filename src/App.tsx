@@ -4,8 +4,9 @@ import { Footer, Header, Loader } from "./components";
 import Router from "./router/Router";
 import { Context } from "./context/Context";
 import AuthService from "./service/auth";
-import { getStorage, removeStorage } from "./helpers/localStorage";
+import { removeStorage } from "./helpers/localStorage";
 import { TOKEN_LOCALSTORAGE } from "./constants/constants";
+
 const App: FC = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { auth, setAuth } = useContext(Context);
@@ -26,8 +27,8 @@ const App: FC = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (getStorage(TOKEN_LOCALSTORAGE)) getUser();
-  }, []);
+    if (auth?.token) getUser();
+  }, [auth?.token]);
 
   return (
     <>
