@@ -23,7 +23,7 @@ const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Ele
     <nav className="mb-[0.5px]" aria-label="Tabs">
       <div>
         <select
-          className="block xs:hidden rounded border p-2 md:p-4 border-gray-300 [&_summary::-webkit-details-marker]:hidden w-full focus:outline-blue-700 text-gray-700 sm:text-sm"
+          className={`${styles.borderGray} block xs:hidden [&_summary::-webkit-details-marker]:hidden w-full text-gray-700 sm:text-sm p-1`}
           value={selected}
           onChange={handleChange}
         >
