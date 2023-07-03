@@ -6,6 +6,8 @@ import { CustomInput } from "../components";
 import { IAxiosResponse, ICustomInput } from "../interfaces";
 import AuthService from "../service/auth";
 import errorToString from "../helpers/errorToString";
+import { TOKEN_LOCALSTORAGE } from "../constants/constants";
+
 const User: FC = (): JSX.Element => {
   const navigate = useNavigate();
   const { auth, setAuth } = useContext(Context);
@@ -22,8 +24,8 @@ const User: FC = (): JSX.Element => {
   ];
 
   const handleLogoutClick = () => {
-    setAuth({ token: null, user: null });
-    localStorage.removeItem("a@t#k$n");
+    localStorage.removeItem(TOKEN_LOCALSTORAGE);
+    setAuth({});
     navigate("/login");
   };
 
