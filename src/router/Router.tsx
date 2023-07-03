@@ -1,15 +1,17 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 // Pages
 import { Cart, Home, Login, PageNotFound, Product, Register, User } from "../pages";
+import { Context } from "../context/Context";
 
 const Router: FC = (): JSX.Element => {
-  const token: string | null = localStorage.getItem("a@t#k$n");
+  const { auth } = useContext(Context);
+
   return (
     <Routes>
-      <Route path="/" element={!!token?.trim() ? <Home /> : <Navigate to="/login" />} />
-      {!!!token ? (
+      <Route path="/" element={!!auth?.token ? <Home /> : <Navigate to="/login" />} />
+      {!!!auth?.token ? (
         <Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
