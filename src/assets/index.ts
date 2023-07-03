@@ -9,3 +9,4 @@ export { default as iconWhiteStar } from "./icons/white-star.svg";
 export { default as loader } from "./icons/loader.svg";
 export { default as iconEye } from "./icons/eye.svg";
 export { default as iconEyeSlash } from "./icons/eye-slash.svg";
+export { default as iconTrash } from "./icons/trash.svg";
