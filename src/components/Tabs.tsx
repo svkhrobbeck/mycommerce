@@ -2,6 +2,7 @@ import { FC, Fragment, ChangeEvent, useState } from "react";
 import { IProductCategory } from "../interfaces";
 import { v4 as uuidv4 } from "uuid";
 import { useSearchParams } from "react-router-dom";
+import { styles } from "../constants/styles";
 
 interface ITabs {
   categories: IProductCategory[];

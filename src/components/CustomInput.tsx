@@ -1,21 +1,44 @@
-import { FC, ChangeEvent } from "react";
+import { FC, ChangeEvent, useState } from "react";
 import { ICustomInput } from "../interfaces";
+import { iconEye, iconEyeSlash } from "../assets/icons";
+import { styles as globalStyles } from "../constants/styles";
 
 const CustomInput: FC<ICustomInput> = ({ type, placeholder, styles, value, setValue }): JSX.Element => {
+  const [isShowing, setisShowing] = useState(false);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value.toLowerCase());
   };
 
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      aria-label={placeholder}
-      name={placeholder}
-      onChange={handleChange}
-      className={`${styles} lowercase border text-sm rounded-lg outline-none  block w-full p-2 md:p-3 bg-gray-700  placeholder-gray-400 text-white text-[19px] [&:not(:last-child)]:mb-3`}
-    />
+    <>
+      {type === "password" ? (
+        <div className={`${styles}  relative`}>
+          <input
+            type={isShowing ? "text" : type}
+            placeholder={placeholder}
+            value={value}
+            aria-label={placeholder}
+            name={placeholder}
+            onChange={handleChange}
+            className={`${globalStyles.customInput}`}
+          />
+          <button className="flex absolute top-[50%] -translate-y-[50%] right-6" type="button" onClick={() => setisShowing(p => !p)}>
+            <img className="w-4 h-4" src={isShowing ? iconEyeSlash : iconEye} alt="icon eye" />
+          </button>
+        </div>
+      ) : (
+        <input
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          aria-label={placeholder}
+          name={placeholder}
+          onChange={handleChange}
+          className={`${globalStyles.customInput} [&:not(:last-child)]:mb-3`}
+        />
+      )}
+    </>
   );
 };
 
