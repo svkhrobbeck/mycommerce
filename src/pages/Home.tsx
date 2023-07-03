@@ -49,26 +49,29 @@ const Home: FC = (): JSX.Element => {
   };
 
   return (
-    <section className={`${styles.py} ${styles.flexCol}  flex-grow-[1]`}>
-      <div className={`${styles.py} ${styles.container} flex-grow-[1]`}>
-        <h2 className="mb-4 lg:mb-8 sm:text-3xl text-xl text-center font-bold text-gray-900">Product Categories</h2>
-        <ProductFilterBar setCount={setCount} />
-
-        <div className="lg:grid lg:grid-cols-4 lg:items-start lg:gap-8">
-          <div className="mt-2 lg:mt-0 lg:col-span-4">
-            <Tabs categories={categories} categoryId={categoryId} handleSetCategory={handleSetCategory} />
-            <ProductsList products={products} />
-            {!!products.length && (
-              <div className="text-center">
-                <button className={`${styles.buttonPurpleOutlined}`} onClick={() => setCount(products.length ? count + 1 : 1)}>
-                  Download
-                </button>
+    <>
+      {!!products.length ? (
+        <section className={`${styles.py} ${styles.flexCol}  flex-grow-[1]`}>
+          <div className={`${styles.py} ${styles.container} flex-grow-[1]`}>
+            <h2 className="mb-4 lg:mb-8 sm:text-3xl text-xl text-center font-bold text-gray-900">Product Categories</h2>
+            <ProductFilterBar setCount={setCount} />
+            <div className="lg:grid lg:grid-cols-4 lg:items-start lg:gap-8">
+              <div className="mt-2 lg:mt-0 lg:col-span-4">
+                <Tabs categories={categories} categoryId={categoryId} handleSetCategory={handleSetCategory} />
+                <ProductsList products={products} />
+                <div className="text-center">
+                  <button className={`${styles.buttonPurpleOutlined}`} onClick={() => setCount(products.length ? count + 1 : 1)}>
+                    Download
+                  </button>
+                </div>
               </div>
-            )}
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 };
 
