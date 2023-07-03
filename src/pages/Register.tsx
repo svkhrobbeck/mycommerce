@@ -18,7 +18,7 @@ const Register: React.FC = (): JSX.Element => {
   const inputs: ICustomInput[] = [
     { type: "text", placeholder: "Full Name", styles: "", value: name, setValue: setName },
     { type: "email", placeholder: "Email", styles: "", value: email, setValue: setEmail },
-    { type: "password", placeholder: "Password", styles: "", value: password, setValue: setPassword },
+    { type: "password", placeholder: "Password", styles: "mb-3", value: password, setValue: setPassword },
   ];
 
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
