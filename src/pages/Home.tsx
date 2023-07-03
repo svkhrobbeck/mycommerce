@@ -19,8 +19,8 @@ const Home: FC = (): JSX.Element => {
   const params: IParams = {
     offset: 0,
     limit,
-    price_min: searchParams.get("price_min") || null,
-    price_max: searchParams.get("price_max") || null,
+    price_min: searchParams.get("min") || null,
+    price_max: searchParams.get("max") || null,
     categoryId: +(searchParams.get("category") || categoryId),
     title: searchParams.get("title") || null,
   };

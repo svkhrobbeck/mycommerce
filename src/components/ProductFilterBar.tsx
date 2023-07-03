@@ -9,8 +9,8 @@ interface IProps {
 
 const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [min, setMin] = useState<string>(searchParams.get("price_min") || "");
-  const [max, setMax] = useState<string>(searchParams.get("price_max") || "");
+  const [min, setMin] = useState<string>(searchParams.get("min") || "");
+  const [max, setMax] = useState<string>(searchParams.get("max") || "");
   const [title, setTitle] = useState<string>(searchParams.get("title") || "");
   let timeoutId = useRef<ReturnType<typeof setTimeout>>();
 
