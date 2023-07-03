@@ -18,11 +18,15 @@ const Login: React.FC = (): JSX.Element => {
 
   const inputs: ICustomInput[] = [
     { type: "text", placeholder: "Email", styles: "", value: email, setValue: setEmail },
-    { type: "password", placeholder: "Password", styles: "", value: password, setValue: setPassword },
+    { type: "password", placeholder: "Password", styles: "mb-3", value: password, setValue: setPassword },
   ];
 
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!email.trim()) return setErr("Type your email");
+    if (!password.trim()) return setErr("Type your password");
+    if (password.trim().length < 4) return setErr("Password must be least 4 characters long");
 
     setIsLoading(true);
     const user: IAuthUser = { email, password };
