@@ -50,7 +50,7 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
           placeholder="Search..."
           value={title}
           onChange={handleChangeSearch}
-          className="border-gray-300 p-2 md:p-4 focus:border-gray-500 outline-none rounded border w-full shadow-sm sm:text-md"
+          className={`${styles.borderGray} p-2 md:p-4 w-full shadow-sm sm:text-md`}
         />
         <span className="absolute inset-y-0 end-0 grid w-10">
           <button className="text-gray-600 hover:text-gray-700">
@@ -72,7 +72,7 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
         </span>
       </div>
 
-      <details className="overflow-hidden select-none rounded border border-gray-300">
+      <details className={`${styles.borderGray} overflow-hidden select-none`}>
         <summary className={`${styles.flexBetween} cursor-pointer p-2 md:p-4 text-gray-900 transition-all`}>
           <span className="hidden sm:inline-block text-sm font-medium">Price</span>
 
@@ -80,7 +80,7 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
             <label htmlFor="FilterPriceFrom" className="flex items-center gap-2">
               <span className="text-sm text-gray-600">$</span>
               <input
-                className="w-full p-1 focus:border-gray-500 outline-none shadow-sm sm:text-sm overflow-hidden select-none rounded border border-gray-300"
+                className={`${styles.borderGray} w-full p-1 shadow-sm sm:text-sm overflow-hidden select-none`}
                 type="number"
                 id="FilterPriceFrom"
                 placeholder="From"
@@ -91,7 +91,7 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
             <label htmlFor="FilterPriceTo" className="flex items-center gap-2">
               <span className="text-sm text-gray-600">$</span>
               <input
-                className="w-full p-1 focus:border-gray-500 outline-none shadow-sm sm:text-sm overflow-hidden select-none rounded border border-gray-300"
+                className={`${styles.borderGray} w-full p-1 shadow-sm sm:text-sm overflow-hidden select-none`}
                 type="number"
                 id="FilterPriceTo"
                 placeholder="To"
