@@ -20,9 +20,9 @@ const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Ele
   };
 
   return (
-    <nav className="overflow-x-auto sm:overflow-x-visible" aria-label="Tabs">
+    <nav className="overflow-x-auto overflow-y-hidden" aria-label="Tabs">
       <select
-        className={`${styles.borderGray} block xs:hidden [&_summary::-webkit-details-marker]:hidden w-full text-gray-700 sm:text-sm p-1`}
+        className={`${styles.borderGray} block xs:hidden [&_summary::-webkit-details-marker]:hidden w-full text-gray-700 sm:text-sm p-2`}
         value={selected}
         onChange={handleChange}
       >
@@ -35,7 +35,7 @@ const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Ele
         </optgroup>
       </select>
 
-      <ul className="hidden xs:flex max-w-full border-b border-gray-300 text-center">
+      <ul className="hidden xs:flex max-w-full border-t-0 border-gray-300 text-center">
         {categories.map(({ name, id }: IProductCategory) => (
           <Fragment key={id}>
             {categoryId === id ? (
@@ -45,7 +45,7 @@ const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Ele
               </li>
             ) : (
               <li
-                className="flex-1  whitespace-nowrap cursor-pointer block p-2 lg:p-4 text-[12px] lg:text-[16px] font-medium text-gray-500"
+                className="flex-1 border-b whitespace-nowrap cursor-pointer block p-2 lg:p-4 text-[12px] lg:text-[16px] font-medium text-gray-500"
                 onClick={() => handleSetCategory(id)}
               >
                 {name}
