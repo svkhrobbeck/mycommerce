@@ -21,28 +21,30 @@ const ProductCard: FC<IProduct> = ({ id, images, title, price }): JSX.Element =>
 
   return (
     <div className={`${styles.borderGray} p-1 sm:p-2 md:p-3 select-none`}>
-      <div className="hidden sm:block">
+      <Link to={`/product/${id}`} className="hidden sm:block">
         <SwiperImageSliders images={images || []} />
-      </div>
+      </Link>
       <div>
         <img
           src={images && images[getRandomNumber(images?.length || 2)]}
           className="h-[350px] rounded-md block sm:hidden w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
         />
       </div>
-      <p className="text-sm mb-2">Highest Rated Product</p>
-      <div className="flex mb-1">
-        <img className="w-[20px] h-auto" src={iconStar} alt="icon star" />
-        <img className="w-[20px] h-auto" src={iconStar} alt="icon star" />
-        <img className="w-[20px] h-auto" src={iconStar} alt="icon star" />
-        <img className="w-[20px] h-auto" src={iconStar} alt="icon star" />
-        <img className="w-[20px] h-auto" src={iconWhiteStar} alt="icon star" />
-      </div>
 
       <div className="relative bg-white">
-        <Link to={`/product/${id}`} className="group mb-2 block overflow-hidden">
-          <h3 className="text-lg font-semibold mb-2 text-blue-700 group-hover:underline group-hover:underline-offset-4">{title}</h3>
-        </Link>
+        <h3 className="text-lg font-semibold mb-1 text-blue-700 group-hover:underline group-hover:underline-offset-4">
+          <Link to={`/product/${id}`} className="group mb-2 block overflow-hidden">
+            {title}
+          </Link>
+        </h3>
+        <p className="text-sm mb-3">Highest Rated Product</p>
+        <div className="flex mb-1">
+          <img className="w-[20px] h-auto" src={iconStar} alt="icon star" />
+          <img className="w-[20px] h-auto" src={iconStar} alt="icon star" />
+          <img className="w-[20px] h-auto" src={iconStar} alt="icon star" />
+          <img className="w-[20px] h-auto" src={iconStar} alt="icon star" />
+          <img className="w-[20px] h-auto" src={iconWhiteStar} alt="icon star" />
+        </div>
         <p className="mb-3">
           <span className="tracking-wider text-gray-900">${price}</span>
         </p>

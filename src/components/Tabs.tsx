@@ -12,7 +12,7 @@ interface ITabs {
 
 const Tabs: FC<ITabs> = ({ categories, categoryId, handleSetCategory }): JSX.Element => {
   const [searchParams] = useSearchParams();
-  const [selected, setSelected] = useState<number>(+(searchParams.get("category") || 1));
+  const [selected, setSelected] = useState<number>(+(searchParams.get("category") || 0));
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelected(+e.target.value);

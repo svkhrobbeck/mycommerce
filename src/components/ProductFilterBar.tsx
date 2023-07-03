@@ -14,7 +14,7 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
   const [title, setTitle] = useState<string>(searchParams.get("title") || "");
   let timeoutId = useRef<ReturnType<typeof setTimeout>>();
 
-  const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>): void => {
     clearTimeout(timeoutId.current);
     setTitle(e.target.value);
     timeoutId.current = setTimeout(() => {
@@ -23,14 +23,10 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
     }, 500);
   };
 
-  const changeClearMinVal = (e: ChangeEvent<HTMLInputElement>) => {
-    setMin(e.target.value);
-    setSearchParams(getUrlParams("price_min", e.target.value, searchParams));
-  };
-
-  const changeMaxVal = (e: ChangeEvent<HTMLInputElement>) => {
-    setMax(e.target.value);
-    setSearchParams(getUrlParams("price_max", e.target.value, searchParams));
+  const changeValPrice = (e: ChangeEvent<HTMLInputElement>, name: "min" | "max"): void => {
+    const val = e.target.value;
+    name === "max" ? setMax(val) : setMin(val);
+    setSearchParams(getUrlParams(name, val, searchParams));
   };
 
   return (
@@ -78,7 +74,7 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
                 id="FilterPriceFrom"
                 placeholder="From"
                 value={min}
-                onChange={changeClearMinVal}
+                onChange={e => changeValPrice(e, "min")}
               />
             </label>
             <label htmlFor="FilterPriceTo" className="flex items-center gap-2">
@@ -89,7 +85,7 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
                 id="FilterPriceTo"
                 placeholder="To"
                 value={max}
-                onChange={changeMaxVal}
+                onChange={e => changeValPrice(e, "max")}
               />
             </label>
           </div>
