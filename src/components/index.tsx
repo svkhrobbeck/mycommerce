@@ -10,3 +10,4 @@ export { default as Loader } from "./Loader";
 export { default as CartItem } from "./CartItem";
 export { default as CheckoutModal } from "./CheckoutModal";
 export { default as ProductsNotFound } from "./ProductsNotFound";
+export { default as Modal } from "./Modal";
