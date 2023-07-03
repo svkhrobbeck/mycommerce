@@ -29,6 +29,10 @@ const User: FC = (): JSX.Element => {
 
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!email.trim()) return setErr("Type your email");
+    if (!password.trim()) return setErr("Type your password");
+    if (password.trim().length < 4) return setErr("Password must be least 4 characters long");
     setIsLoading(true);
     setErr(null);
     try {
