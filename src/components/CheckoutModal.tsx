@@ -29,6 +29,8 @@ const CheckoutModal: FC<IChekoutModal> = ({ total, carts }): JSX.Element => {
                     <div>
                       <h3 className="text-xs md:text-sm font-semibold text-gray-900">{cart.title}</h3>
                       <span className="font-medium text-gray-600 inline leading-[0] text-xs md:text-sm">Price: ${cart.price}</span>
+                      <br />
+                      <span className="font-medium text-gray-600 inline leading-[0] text-xs md:text-sm">Count: {cart.count}</span>
                     </div>
                   </li>
                 ))}
