@@ -45,7 +45,14 @@ const Footer: FC = (): JSX.Element => {
             ))}
           </div>
         </div>
-        <p className={`${styles.paragraph} opacity-50`}>Copyright 2023. All Rights Reserved</p>
+        <p className={`${styles.paragraph} ${styles.flexStart} gap-1`}>
+          <span>Created by</span>
+          <a href="https://t.me/svkhrobbeck" target="_blank">
+            Suhrobbek 2023.
+          </a>
+
+          <span className="opacity-50">All Rights Reserved</span>
+        </p>
       </div>
     </footer>
   );
