@@ -48,7 +48,7 @@ const ProductCard: FC<IProduct> = ({ id, images, title, price }): JSX.Element =>
         <p className="mb-3">
           <span className="tracking-wider text-gray-900">${price}</span>
         </p>
-        <button className={`${styles.buttonYellow} hover:scale-[1.02]`} onClick={addToCart}>
+        <button className={`${styles.buttonYellow} ${keys.includes(Number(id)) && "bg-yellow-600"} hover:scale-[1.02]`} onClick={addToCart}>
           {keys.includes(Number(id)) ? "Added" : "Add to Cart"}
         </button>
       </div>
