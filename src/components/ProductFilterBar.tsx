@@ -1,4 +1,4 @@
-import { FC, useState, useRef, ChangeEvent, Dispatch, SetStateAction } from "react";
+import { FC, useState, useRef, ChangeEvent } from "react";
 import { styles } from "../constants/styles";
 import { useSearchParams } from "react-router-dom";
 import getUrlParams from "../helpers/getUrlParams";
