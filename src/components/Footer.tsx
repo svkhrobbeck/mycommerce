@@ -30,14 +30,12 @@ const Footer: FC = (): JSX.Element => {
           </ul>
         </div>
         <div className="flex items-center justify-between flex-col lg:flex-row mb-[6px] md:mb-[10px]">
-          <p
-            className={`${styles.paragraph} opacity-50 md:text-center lg:text-left mb-[10px] max-w-none sm:msx-w-[700px] md:max-w-[800px]`}
-          >
+          <p className={`${styles.paragraph} opacity-50 text-center lg:text-left mb-[10px] max-w-none sm:msx-w-[700px] md:max-w-[800px]`}>
             Our team at MyCommerce ensures a complete and rewarding personal shopping experience, addressing all your needs. With our open
             availability seven days a week, you can enjoy the full range of features and benefits we offer.
           </p>
 
-          <div className="flex items-center gap-2 md:gap-4 w-full md:w-auto">
+          <div className="flex items-center justify-center gap-2 md:gap-4 w-full md:w-auto">
             {socials.map(social => (
               <Link className="flex items-center" to={social.link} key={social.link}>
                 <img className="w-[18px] md:w-[22px] h-auto" src={social.icon} alt="icon" />
@@ -45,13 +43,13 @@ const Footer: FC = (): JSX.Element => {
             ))}
           </div>
         </div>
-        <p className={`${styles.paragraph} ${styles.flexStart} gap-1`}>
+        <p className={`${styles.paragraph} ${styles.flexCenter} lg:justify-start text-center gap-1`}>
           <span>Created by</span>
           <a href="https://t.me/svkhrobbeck" target="_blank">
-            Suhrobbek 2023.
+            Suhrobbek.
           </a>
 
-          <span className="opacity-50">All Rights Reserved</span>
+          <span className="opacity-50">All Rights Reserved ©️2023</span>
         </p>
       </div>
     </footer>
