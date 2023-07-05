@@ -1,10 +1,9 @@
 import { ChangeEvent, FC, useState } from "react";
 import { IProduct, TypeStateSetter } from "../interfaces";
 import { styles } from "../constants/styles";
-import { addToCart, removeFromCart } from "../helpers/addRemoveCart";
 import { Link } from "react-router-dom";
 import { iconTrash } from "../assets";
-
+import useLocalStorage from "../hooks/useLocalstorage";
 interface ICartItem {
   cart: IProduct;
   setCarts: TypeStateSetter;
@@ -13,13 +12,14 @@ interface ICartItem {
 const CartItem: FC<ICartItem> = ({ cart, setCarts }): JSX.Element => {
   const [value, setValue] = useState<number>(typeof cart?.count === "number" ? cart?.count : 1);
   const [decr, setDecr] = useState<string | JSX.Element>("-");
+  const { add, remove } = useLocalStorage();
 
   const updateCart = (count: number): void => {
     const newCart: IProduct = { ...cart, count };
-    setCarts(addToCart(newCart));
+    setCarts(add(newCart));
   };
 
-  const handleDelete = (): void => setCarts(removeFromCart(Number(cart?.id)));
+  const handleDelete = (): void => setCarts(remove(Number(cart?.id)));
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const val: number = +e.target.value;

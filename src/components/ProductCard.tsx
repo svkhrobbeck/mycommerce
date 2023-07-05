@@ -6,14 +6,15 @@ import { IProduct } from "../interfaces";
 import { CART_LOCALSTORAGE } from "../constants/constants";
 import { getStorageParse } from "../helpers/localStorage";
 import { iconStar, iconWhiteStar } from "../assets";
-import toggleCart from "../helpers/toggleCart";
+import useLocalStorage from "../hooks/useLocalstorage";
 
 const ProductCard: FC<IProduct> = ({ id, images, title, price }): JSX.Element => {
   const getRandomNumber = (num: number): number => Math.trunc(Math.random()) * num;
   const [carts, setCarts] = useState<IProduct[]>(getStorageParse(CART_LOCALSTORAGE));
   const [keys, setKeys] = useState<number[]>(getStorageParse(CART_LOCALSTORAGE).map(item => Number(item?.id)));
+  const { toggle } = useLocalStorage();
 
-  const addToCart = (): void => setCarts(toggleCart({ id, images, title, price }));
+  const addToCart = (): void => setCarts(toggle({ id, images, title, price }));
 
   useEffect((): void => {
     setKeys(carts.map(cart => Number(cart.id)));

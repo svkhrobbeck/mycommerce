@@ -6,19 +6,20 @@ import { styles } from "../constants/styles";
 import { Loader, ProductsList, SwiperImageSliders } from "../components";
 import { CART_LOCALSTORAGE } from "../constants/constants";
 import { getStorageParse } from "../helpers/localStorage";
-import toggleCart from "../helpers/toggleCart";
+import useLocalStorage from "../hooks/useLocalstorage";
 
 const Product: FC = (): JSX.Element => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [keys, setKeys] = useState<number[]>(getStorageParse(CART_LOCALSTORAGE).map(item => Number(item.id)));
   const [carts, setCarts] = useState<IProduct[]>(getStorageParse(CART_LOCALSTORAGE));
-  const { id } = useParams();
   const [product, setProduct] = useState<IProduct | null>(null);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [params, setParams] = useState<IParams>({});
   const [isLoading, setIsLoading] = useState(false);
+  const { toggle } = useLocalStorage();
 
-  const addToCart = (): void => setCarts(toggleCart({ ...product }));
+  const addToCart = (): void => setCarts(toggle({ ...product }));
 
   useEffect((): void => {
     setKeys(carts.map(cart => Number(cart.id)));
