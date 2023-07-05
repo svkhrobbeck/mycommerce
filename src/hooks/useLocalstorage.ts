@@ -14,7 +14,7 @@ const useLocalStorage = () => {
       if (index < 0) arr.push(newProduct);
       else arr.splice(index, 1);
     } else arr.push(newProduct);
-    arr.sort((a, b) => Number(a.id) - Number(b.id));
+    arr.sort((a, b) => Number(a.price) - Number(b.price));
 
     setStorageStringify(CART_LOCALSTORAGE, arr);
 
@@ -35,7 +35,7 @@ const useLocalStorage = () => {
     const index = arr.findIndex(item => item.id === product.id);
     arr.splice(index, 1);
     arr.push(product);
-    arr.sort((a, b) => Number(a.id) - Number(b.id));
+    arr.sort((a, b) => Number(a.price) - Number(b.price));
     setStorageStringify(CART_LOCALSTORAGE, arr);
 
     return arr;
