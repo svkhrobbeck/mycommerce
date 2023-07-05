@@ -19,7 +19,7 @@ const Cart: FC = (): JSX.Element => {
         <h1 className="text-xl mb-8 text-center font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
 
         {!!carts.length ? (
-          <ul className="mb-2 space-y-4 max-h-[600px] py-4 overflow-y-auto">
+          <ul className="mb-2 space-y-4 max-h-[300px]  md:max-h-[600px] py-4 overflow-y-auto">
             {carts.map(cart => (
               <li key={cart.id}>
                 <CartItem setCarts={setCarts} cart={cart} />

@@ -49,12 +49,12 @@ const CartItem: FC<ICartItem> = ({ cart, setCarts }): JSX.Element => {
             onClick={handleDec}
             onMouseOver={() => (value === 1 ? setDecr(<img className="w-6 h-auto" src={iconTrash} alt="icon trash" />) : setDecr("-"))}
             onMouseLeave={() => setDecr("-")}
-            className="outline-none flex justify-center items-center w-6 h-6 md:w-10 md:h-10 leading-6 md:leading-10 text-md md:text-xl disabled:opacity-60 text-gray-600 transition hover:opacity-75"
+            className="outline-none flex justify-center items-center w-4 h-4 sm:w-6 sm:h-6 md:w-10 md:h-10 leading-4 sm:leading-6 md:leading-10 text-md md:text-xl disabled:opacity-60 text-gray-600 transition hover:opacity-75"
           >
             {decr}
           </button>
           <input
-            className="w-12 h-6 md:h-10 md:w-16 border-transparent outline-none text-center [-moz-appearance:_textfield] sm:text-sm"
+            className="w-10 h-4 sm:w-12 sm:h-6 md:h-10 md:w-16 border-transparent outline-none text-center [-moz-appearance:_textfield] text-xs sm:text-sm"
             type="number"
             min={1}
             value={value}
@@ -66,13 +66,13 @@ const CartItem: FC<ICartItem> = ({ cart, setCarts }): JSX.Element => {
               updateCart(value + 1);
               setValue(p => p + 1);
             }}
-            className="outline-none w-6 h-6 md:w-10 md:h-10 leading-6 md:leading-10 text-md md:text-xl text-gray-600 transition hover:opacity-75"
+            className="outline-none flex justify-center items-center w-4 h-4 sm:w-6 sm:h-6 md:w-10 md:h-10 leading-4 sm:leading-6 md:leading-10 text-md md:text-xl text-gray-600 transition hover:opacity-75"
           >
             +
           </button>
         </div>
-        <button onClick={handleDelete}>
-          <img className="w-[24px] h-auto" src={iconTrash} alt="icon delete trash" />
+        <button className="flex-shrink-0" onClick={handleDelete}>
+          <img className="w-[18px] md:w-[24px] h-auto" src={iconTrash} alt="icon delete trash" />
         </button>
       </div>
     </div>
