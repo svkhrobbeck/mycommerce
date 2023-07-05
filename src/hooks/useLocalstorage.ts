@@ -8,7 +8,6 @@ const useLocalStorage = () => {
   const toggle = (product: IProduct): IProduct[] => {
     arr = getStorageParse(CART_LOCALSTORAGE);
     const index = arr.findIndex(item => item.id === product.id);
-
     const newProduct = { ...product, count: 1 };
 
     if (!!arr.length) {
@@ -19,8 +18,6 @@ const useLocalStorage = () => {
 
     setStorageStringify(CART_LOCALSTORAGE, arr);
 
-    console.log(arr);
-
     return arr;
   };
 
@@ -28,7 +25,6 @@ const useLocalStorage = () => {
     arr = getStorageParse(CART_LOCALSTORAGE);
     const index = arr.findIndex(item => item.id === id);
     arr.splice(index, 1);
-
     setStorageStringify(CART_LOCALSTORAGE, arr);
 
     return arr;
@@ -40,7 +36,6 @@ const useLocalStorage = () => {
     arr.splice(index, 1);
     arr.push(product);
     arr.sort((a, b) => Number(a.id) - Number(b.id));
-
     setStorageStringify(CART_LOCALSTORAGE, arr);
 
     return arr;
