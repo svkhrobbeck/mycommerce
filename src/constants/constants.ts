@@ -3,8 +3,6 @@ import { iconFacebook, iconInstagram, iconTwitter } from "../assets";
 
 export const BASE_API_URL: string = "https://api.escuelajs.co/api/v1/";
 
-export const PAGINATION_LIMIT: number = 9;
-
 export const CART_LOCALSTORAGE = "$c@rt";
 
 export const TOKEN_LOCALSTORAGE = "a@t#k$n";

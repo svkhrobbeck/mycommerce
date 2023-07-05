@@ -3,11 +3,7 @@ import { styles } from "../constants/styles";
 import { useSearchParams } from "react-router-dom";
 import getUrlParams from "../helpers/getUrlParams";
 
-interface IProps {
-  setCount: Dispatch<SetStateAction<number>>;
-}
-
-const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
+const ProductFilterBar: FC = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [min, setMin] = useState<string>(searchParams.get("min") || "");
   const [max, setMax] = useState<string>(searchParams.get("max") || "");
@@ -18,7 +14,6 @@ const ProductFilterBar: FC<IProps> = ({ setCount }): JSX.Element => {
     clearTimeout(timeoutId.current);
     setTitle(e.target.value);
     timeoutId.current = setTimeout(() => {
-      setCount(1);
       setSearchParams(getUrlParams("title", e.target.value, searchParams));
     }, 500);
   };
