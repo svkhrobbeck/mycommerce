@@ -8,6 +8,7 @@ import AuthService from "../service/auth";
 import errorToString from "../helpers/errorToString";
 import { TOKEN_LOCALSTORAGE } from "../constants/constants";
 import { removeStorage } from "../helpers/localStorage";
+import { Helmet } from "react-helmet";
 
 const User: FC = (): JSX.Element => {
   const navigate = useNavigate();
@@ -53,6 +54,10 @@ const User: FC = (): JSX.Element => {
 
   return (
     <div className={`${styles.container} ${styles.py}`}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Ecommerce | User Settings</title>
+      </Helmet>
       <h2 className="text-4xl font-semibold text-center mb-4 uppercase">Update Profile</h2>
       <form onSubmit={handleSubmit} className="rounded-xl border border-gray-700 bg-gray-800 p-4">
         <div className="mb-4 flex w-full items-center gap-4 flex-wrap">
