@@ -15,13 +15,13 @@ const CustomInput: FC<ICustomInput> = ({ type, placeholder, styles, value, setVa
       {type === "password" ? (
         <div className={`${styles}  relative`}>
           <input
+            className={`${globalStyles.customInput} ${globalStyles.focus}`}
             type={isShowing ? "text" : type}
             placeholder={placeholder}
             value={value}
             aria-label={placeholder}
             name={placeholder}
             onChange={handleChange}
-            className={`${globalStyles.customInput}`}
           />
           <button className="flex absolute top-[50%] -translate-y-[50%] right-6" type="button" onClick={() => setisShowing(p => !p)}>
             <img className="w-4 h-4" src={isShowing ? iconEyeSlash : iconEye} alt="icon eye" />
@@ -29,13 +29,13 @@ const CustomInput: FC<ICustomInput> = ({ type, placeholder, styles, value, setVa
         </div>
       ) : (
         <input
+          className={`${globalStyles.customInput} ${globalStyles.focus} [&:not(:last-child)]:mb-3`}
           type={type}
           placeholder={placeholder}
           value={value}
           aria-label={placeholder}
           name={placeholder}
           onChange={handleChange}
-          className={`${globalStyles.customInput} [&:not(:last-child)]:mb-3`}
         />
       )}
     </>

@@ -69,6 +69,17 @@ const Product: FC = (): JSX.Element => {
               Back to Home
             </button>
           </>
+          <h3 className="text-[36px] mb-[6px] font-bold uppercase text-gray-700">{product?.title}</h3>
+          <p className="mb-1.5 max-w-[390px] text-md text-gray-500">{product?.description}</p>
+          <p className="max-w-[390px] mb-2 font-semibold text-xl text-gray-800">Price: ${product?.price}</p>
+          <SwiperImageSliders images={product?.images || []} isOne={false} />
+          <button className={`${styles.buttonYellow} ${styles.focus} mb-3`} disabled={isLoading} onClick={addToCart}>
+            {isLoading ? "Loading..." : <>{keys.includes(Number(id)) ? "Added" : "Add to Cart"}</>}
+          </button>
+          <button className={`${styles.buttonGreen} ${styles.focus} mb-6 w-full`} onClick={() => navigate("/")}>
+            Back to Home
+          </button>
+
           {!!products.length && (
             <>
               <h3 className="text-2xl border-b md:text-4xl lg:text-5xl uppercase pb-2 font-semibold text-center">

@@ -33,7 +33,7 @@ const Cart: FC = (): JSX.Element => {
             <p className="text-[11px] sm:text-[14px] md:text-[16px] lg:text-[18px] mb-3">
               Start with a category on the home page or find the product you need by searching
             </p>
-            <button onClick={() => navigate("/")} className={`${styles.buttonGreen}`}>
+            <button className={`${styles.buttonGreen} ${styles.focus}`} onClick={() => navigate("/")}>
               Back to Home
             </button>
           </div>
@@ -50,7 +50,7 @@ const Cart: FC = (): JSX.Element => {
               <span>+ 10$</span>
             </div>
             <div className="flex justify-end">
-              <button onClick={() => setAuth(prev => ({ ...prev, modal: true }))} className={`${styles.buttonDarkGray}`}>
+              <button className={`${styles.buttonDarkGray} ${styles.focus}`} onClick={() => setAuth(prev => ({ ...prev, modal: true }))}>
                 Checkout
               </button>
             </div>

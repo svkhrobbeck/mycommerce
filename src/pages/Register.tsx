@@ -57,7 +57,7 @@ const Register: React.FC = (): JSX.Element => {
         ))}
 
         <button
-          className={`${styles.flexCenter} text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-3 text-center mb-3 bg-blue-600 hover:bg-blue-700 w-full`}
+          className={`${styles.flexCenter} ${styles.focus} text-white font-medium rounded-lg text-sm px-7 py-3 text-center mb-3 bg-blue-600 hover:bg-blue-700 w-full`}
           type="submit"
           disabled={isLoading}
         >

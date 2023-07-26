@@ -67,7 +67,10 @@ const User: FC = (): JSX.Element => {
             <p className="leading-none text-md font-medium text-gray-300 mb-2">Email: {auth?.user?.email}</p>
             <p className="leading-none text-md font-medium text-gray-300">Password: {auth?.user?.password}</p>
           </div>
-          <button className={`${styles.buttonGreen} ml-auto self-center flex-grow-[1] xs:flex-grow-0`} onClick={handleLogoutClick}>
+          <button
+            className={`${styles.buttonGreen} ${styles.focus} ml-auto self-center flex-grow-[1] xs:flex-grow-0`}
+            onClick={handleLogoutClick}
+          >
             Logout
           </button>
         </div>
@@ -76,10 +79,16 @@ const User: FC = (): JSX.Element => {
             <CustomInput key={input.placeholder} {...input} />
           ))}
           <div className={`${styles.flexEnd} flex-col xs:flex-row gap-3`}>
-            <button className={`${styles.buttonLightGray} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`} onClick={() => navigate("/")}>
+            <button
+              className={`${styles.buttonLightGray} ${styles.focus} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`}
+              onClick={() => navigate("/")}
+            >
               Back to Home
             </button>
-            <button className={`${styles.buttonPurpleOutlined} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`} disabled={isLoading}>
+            <button
+              className={`${styles.buttonPurpleOutlined} ${styles.focus} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`}
+              disabled={isLoading}
+            >
               {isLoading ? "Loading..." : "Save"}
             </button>
           </div>
