@@ -6,6 +6,7 @@ import { CartItem, CheckoutModal } from "../components";
 import { styles } from "../constants/styles";
 import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Cart: FC = (): JSX.Element => {
   const navigate = useNavigate();
@@ -16,8 +17,11 @@ const Cart: FC = (): JSX.Element => {
   return (
     <div>
       <section className={`${styles.py} mx-auto max-w-4xl px-4 sm:px-6 lg:px-8`}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Ecommerce | Cart</title>
+        </Helmet>
         <h1 className="text-xl mb-8 text-center font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
-
         {!!carts.length ? (
           <ul className="mb-2 space-y-4 max-h-[300px]  md:max-h-[600px] py-4 overflow-y-auto">
             {carts.map(cart => (

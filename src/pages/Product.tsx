@@ -7,6 +7,7 @@ import { Loader, ProductsList, SwiperImageSliders } from "../components";
 import { CART_LOCALSTORAGE } from "../constants/constants";
 import { getStorageParse } from "../helpers/localStorage";
 import useLocalStorage from "../hooks/useLocalstorage";
+import { Helmet } from "react-helmet";
 
 const Product: FC = (): JSX.Element => {
   const { id } = useParams();
@@ -57,18 +58,10 @@ const Product: FC = (): JSX.Element => {
     <>
       {!!product ? (
         <div className={`${styles.container} py-4 md:py-6`}>
-          <>
-            <h3 className="text-[36px] mb-[6px] font-bold uppercase text-gray-700">{product?.title}</h3>
-            <p className="mb-1.5 max-w-[390px] text-md text-gray-500">{product?.description}</p>
-            <p className="max-w-[390px] mb-2 font-semibold text-xl text-gray-800">Price: ${product?.price}</p>
-            <SwiperImageSliders images={product?.images || []} isOne={false} />
-            <button className={`${styles.buttonYellow} mb-3`} disabled={isLoading} onClick={addToCart}>
-              {isLoading ? "Loading..." : <>{keys.includes(Number(id)) ? "Added" : "Add to Cart"}</>}
-            </button>
-            <button className={`${styles.buttonGreen} mb-6 w-full`} onClick={() => navigate("/")}>
-              Back to Home
-            </button>
-          </>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>Ecommerce | {product?.title}</title>
+          </Helmet>
           <h3 className="text-[36px] mb-[6px] font-bold uppercase text-gray-700">{product?.title}</h3>
           <p className="mb-1.5 max-w-[390px] text-md text-gray-500">{product?.description}</p>
           <p className="max-w-[390px] mb-2 font-semibold text-xl text-gray-800">Price: ${product?.price}</p>

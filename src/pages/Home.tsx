@@ -5,6 +5,7 @@ import { IParams, IProduct, IProductCategory } from "../interfaces";
 import { ProductFilterBar, ProductsList, ProductsNotFound, Tabs } from "../components";
 import { styles } from "../constants/styles";
 import getUrlParams from "../helpers/getUrlParams";
+import { Helmet } from "react-helmet";
 
 const Home: FC = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,6 +53,10 @@ const Home: FC = (): JSX.Element => {
 
   return (
     <section className={`${styles.py} ${styles.container} ${styles.flexCol}  flex-grow-[1]`}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Ecommerce | Home</title>
+      </Helmet>
       <h2 className="mb-4 lg:mb-8 sm:text-3xl text-xl text-center font-bold text-gray-900">Product Categories</h2>
       <ProductFilterBar />
       <Tabs categories={categories} categoryId={categoryId} handleSetCategory={handleSetCategory} />

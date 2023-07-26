@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import errorToString from "../helpers/errorToString";
 import { CustomInput } from "../components";
 import { spinner } from "../assets";
+import { Helmet } from "react-helmet";
 
 const Login: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
@@ -46,8 +47,11 @@ const Login: React.FC = (): JSX.Element => {
 
   return (
     <div className={`${styles.container} max-w-[800px] py-4 md:py-6`}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Ecommerce | Login</title>
+      </Helmet>
       <h2 className="text-center text-[26px] md:text-[36px] font-bold mb-4">Login</h2>
-
       <form onSubmit={handleSubmit}>
         {inputs.map(input => (
           <CustomInput {...input} key={input.placeholder} />
