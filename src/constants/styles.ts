@@ -4,6 +4,7 @@ export const styles: IStyles = {
   flexBetween: "flex justify-between items-center",
   flexStart: "flex justify-start items-center",
   flexEnd: "flex justify-end items-center",
+  focus: "focus:ring-4 focus:ring-blue-300 focus:outline-none",
   flexCenter: "flex justify-center items-center",
   container: "max-w-[1460px] w-full mx-auto px-[20px]",
   flexCol: "flex flex-col",

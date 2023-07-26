@@ -6,6 +6,7 @@ export interface IStyles {
   flexStart: string;
   flexEnd: string;
   flexCenter: string;
+  focus: string;
   container: string;
   paragraph: string;
   flexCol: string;
