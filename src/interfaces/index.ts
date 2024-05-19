@@ -1,35 +1,11 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export interface IStyles {
-  flexBetween: string;
-  flexStart: string;
-  flexEnd: string;
-  flexCenter: string;
-  focus: string;
-  container: string;
-  paragraph: string;
-  flexCol: string;
-  py: string;
-  buttonPurpleOutlined: string;
-  buttonPurple: string;
-  buttonYellow: string;
-  badgeYellow: string;
-  buttonGreen: string;
-  buttonLightGray: string;
-  buttonDarkGray: string;
-  customInput: string;
-  borderGray: string;
-  borderGrayNotRounded: string;
-}
+export type IChildren = Readonly<{ children: ReactNode }>;
 
 export interface ISocials {
   link: string;
   icon: string;
-}
-
-export interface IChildren {
-  children: JSX.Element;
 }
 
 export interface IUser {

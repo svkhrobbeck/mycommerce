@@ -1,9 +1,10 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { createPortal } from "react-dom";
+
 import { IProduct } from "../interfaces";
 import { styles } from "../constants/styles";
+import { useMyContext } from "../context/Context";
 import { countries } from "../constants/constants";
-import { Context } from "../context/Context";
 
 interface IChekoutModal {
   total: number;
@@ -11,7 +12,7 @@ interface IChekoutModal {
 }
 
 const CheckoutModal: FC<IChekoutModal> = ({ total, carts }): JSX.Element => {
-  const { auth, setAuth } = useContext(Context);
+  const { auth, setAuth } = useMyContext();
 
   return createPortal(
     <>
@@ -48,16 +49,8 @@ const CheckoutModal: FC<IChekoutModal> = ({ total, carts }): JSX.Element => {
                   type="text"
                   placeholder="Last Name"
                 />
-                <input
-                  className={`${styles.borderGray} p-2 mt-1 w-full rounded-md shadow-sm sm:text-sm col-span-6 mb-auto`}
-                  type="email"
-                  placeholder="Email"
-                />
-                <input
-                  type="tel"
-                  placeholder="Phone"
-                  className={`${styles.borderGray} p-2 mt-1 w-full rounded-md shadow-sm sm:text-sm col-span-6 mb-auto`}
-                />
+                <input className={`${styles.borderGray} p-2 mt-1 w-full rounded-md shadow-sm sm:text-sm col-span-6 mb-auto`} type="email" placeholder="Email" />
+                <input type="tel" placeholder="Phone" className={`${styles.borderGray} p-2 mt-1 w-full rounded-md shadow-sm sm:text-sm col-span-6 mb-auto`} />
                 <fieldset className="col-span-6">
                   <input
                     type="text"
@@ -91,9 +84,7 @@ const CheckoutModal: FC<IChekoutModal> = ({ total, carts }): JSX.Element => {
                     placeholder="ZIP Code"
                     className={`${styles.borderGray} -mt-[1px] p-2 relative w-full rounded-t-none focus:z-10 sm:text-sm mb-3`}
                   />
-                  <button className="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg mb-2">
-                    Buy Now
-                  </button>
+                  <button className="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg mb-2">Buy Now</button>
                   <button className={`${styles.buttonGreen} w-full`} onClick={() => setAuth(prev => ({ ...prev, modal: false }))}>
                     Cancel
                   </button>

@@ -1,15 +1,17 @@
-import { FC, useState, useContext, useEffect } from "react";
-import "./service/axios";
-import { Footer, Header, Loader } from "./components";
-import Router from "./router/Router";
-import { Context } from "./context/Context";
-import AuthService from "./service/auth";
-import { removeStorage } from "./helpers/localStorage";
+import { useState, useEffect, FC } from "react";
+
 import { TOKEN_LOCALSTORAGE } from "./constants/constants";
+import { removeStorage } from "./helpers/localStorage";
+import { useMyContext } from "./context/Context";
+import AuthService from "./service/auth";
+import "./service/axios";
+
+import { Loader } from "./components";
+import Router from "./router/Router";
 
 const App: FC = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { auth, setAuth } = useContext(Context);
+  const { auth, setAuth } = useMyContext();
 
   const getUser = async () => {
     setIsLoading(true);
@@ -30,13 +32,7 @@ const App: FC = (): JSX.Element => {
     if (auth?.token) getUser();
   }, [auth?.token]);
 
-  return (
-    <>
-      <Header />
-      <main className="flex-grow-[1] flex flex-col">{isLoading ? <Loader /> : <Router />}</main>
-      <Footer />
-    </>
-  );
+  return <main>{isLoading ? <Loader /> : <Router />}</main>;
 };
 
 export default App;

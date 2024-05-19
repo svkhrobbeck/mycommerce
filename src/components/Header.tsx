@@ -1,7 +1,9 @@
 import { FC } from "react";
-import { styles } from "../constants/styles";
 import { Link } from "react-router-dom";
+
+import { styles } from "../constants/styles";
 import { iconCart, iconUser } from "../assets";
+
 const Header: FC = (): JSX.Element => {
   return (
     <header className="w-full py-3 md:py-5 bg-dark sticky top-0 z-[100]">

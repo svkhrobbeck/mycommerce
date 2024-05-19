@@ -1,18 +1,21 @@
-import { FC, useContext, useState, ChangeEvent } from "react";
-import { Context } from "../context/Context";
+import { FC, useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { styles } from "../constants/styles";
-import { CustomInput } from "../components";
-import { IAxiosResponse, ICustomInput } from "../interfaces";
-import AuthService from "../service/auth";
-import errorToString from "../helpers/errorToString";
-import { TOKEN_LOCALSTORAGE } from "../constants/constants";
-import { removeStorage } from "../helpers/localStorage";
 import { Helmet } from "react-helmet";
 
+import { IAxiosResponse, ICustomInput } from "../interfaces";
+import { TOKEN_LOCALSTORAGE } from "../constants/constants";
+import { removeStorage } from "../helpers/localStorage";
+import errorToString from "../helpers/errorToString";
+import { useMyContext } from "../context/Context";
+import { styles } from "../constants/styles";
+import AuthService from "../service/auth";
+
+import { CustomInput } from "../components";
+
 const User: FC = (): JSX.Element => {
+  const { auth, setAuth } = useMyContext();
   const navigate = useNavigate();
-  const { auth, setAuth } = useContext(Context);
+
   const [email, setEmail] = useState<string>(auth?.user?.email || "");
   const [password, setPassword] = useState<string>(auth?.user?.password || "");
   const [name, setName] = useState<string>(auth?.user?.name || "");
@@ -20,9 +23,9 @@ const User: FC = (): JSX.Element => {
   const [err, setErr] = useState<string | null>(null);
 
   const inputs: ICustomInput[] = [
-    { type: "text", placeholder: "New Name", styles: "", value: name, setValue: setName },
-    { type: "email", placeholder: "New Email", styles: "", value: email, setValue: setEmail },
     { type: "password", placeholder: "New Password", styles: "mb-4", value: password, setValue: setPassword },
+    { type: "email", placeholder: "New Email", styles: "", value: email, setValue: setEmail },
+    { type: "text", placeholder: "New Name", styles: "", value: name, setValue: setName },
   ];
 
   const handleLogoutClick = () => {
@@ -67,10 +70,7 @@ const User: FC = (): JSX.Element => {
             <p className="leading-none text-md font-medium text-gray-300 mb-2">Email: {auth?.user?.email}</p>
             <p className="leading-none text-md font-medium text-gray-300">Password: {auth?.user?.password}</p>
           </div>
-          <button
-            className={`${styles.buttonGreen} ${styles.focus} ml-auto self-center flex-grow-[1] xs:flex-grow-0`}
-            onClick={handleLogoutClick}
-          >
+          <button className={`${styles.buttonGreen} ${styles.focus} ml-auto self-center flex-grow-[1] xs:flex-grow-0`} onClick={handleLogoutClick}>
             Logout
           </button>
         </div>
@@ -79,16 +79,10 @@ const User: FC = (): JSX.Element => {
             <CustomInput key={input.placeholder} {...input} />
           ))}
           <div className={`${styles.flexEnd} flex-col xs:flex-row gap-3`}>
-            <button
-              className={`${styles.buttonLightGray} ${styles.focus} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`}
-              onClick={() => navigate("/")}
-            >
+            <button className={`${styles.buttonLightGray} ${styles.focus} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`} onClick={() => navigate("/")}>
               Back to Home
             </button>
-            <button
-              className={`${styles.buttonPurpleOutlined} ${styles.focus} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`}
-              disabled={isLoading}
-            >
+            <button className={`${styles.buttonPurpleOutlined} ${styles.focus} w-full xs:w-auto flex-grow-[1] sm:flex-grow-0`} disabled={isLoading}>
               {isLoading ? "Loading..." : "Save"}
             </button>
           </div>

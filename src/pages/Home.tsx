@@ -1,11 +1,12 @@
 import { FC, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
+import { styles } from "../constants/styles";
 import ProductsService from "../service/products";
+import getUrlParams from "../helpers/getUrlParams";
 import { IParams, IProduct, IProductCategory } from "../interfaces";
 import { ProductFilterBar, ProductsList, ProductsNotFound, Tabs } from "../components";
-import { styles } from "../constants/styles";
-import getUrlParams from "../helpers/getUrlParams";
-import { Helmet } from "react-helmet";
 
 const Home: FC = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();

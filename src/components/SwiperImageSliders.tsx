@@ -1,13 +1,14 @@
 import { FC } from "react";
-import { SwiperSlide, Swiper } from "swiper/react";
+import { v4 as uuidv4 } from "uuid";
 import { Pagination, Scrollbar } from "swiper";
+import { SwiperSlide, Swiper } from "swiper/react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import "react-lazy-load-image-component/src/effects/blur.css";
-import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { v4 as uuidv4 } from "uuid";
+import "swiper/css";
 
 interface ISwiperImageSliders {
   images: string[];

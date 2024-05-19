@@ -1,7 +1,8 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
+
 import { styles } from "../constants/styles";
 import { socials } from "../constants/constants";
-import { Link } from "react-router-dom";
 
 const Footer: FC = (): JSX.Element => {
   return (
@@ -31,8 +32,8 @@ const Footer: FC = (): JSX.Element => {
         </div>
         <div className="flex items-center justify-between flex-col lg:flex-row mb-[6px] md:mb-[10px]">
           <p className={`${styles.paragraph} opacity-50 text-center lg:text-left mb-[10px] max-w-none sm:msx-w-[700px] md:max-w-[800px]`}>
-            Our team at MyCommerce ensures a complete and rewarding personal shopping experience, addressing all your needs. With our open
-            availability seven days a week, you can enjoy the full range of features and benefits we offer.
+            Our team at MyCommerce ensures a complete and rewarding personal shopping experience, addressing all your needs. With our open availability seven
+            days a week, you can enjoy the full range of features and benefits we offer.
           </p>
 
           <div className="flex items-center justify-center gap-2 md:gap-4 w-full md:w-auto">

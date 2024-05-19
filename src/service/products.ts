@@ -1,5 +1,5 @@
-import { IParams } from "../interfaces";
 import axios from "./axios";
+import { IParams } from "../interfaces";
 
 const ProductsService = {
   async getProducts(params: IParams) {

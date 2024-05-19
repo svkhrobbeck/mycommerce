@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { IProduct } from "../interfaces";
-import { ProductCard } from ".";
+
 import { styles } from "../constants/styles";
+import { ProductCard } from ".";
 
 interface IProductsList {
   products: IProduct[];

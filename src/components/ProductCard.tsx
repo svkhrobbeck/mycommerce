@@ -1,12 +1,13 @@
-import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { styles } from "../constants/styles";
-import { SwiperImageSliders } from ".";
-import { IProduct } from "../interfaces";
+import { FC, useEffect, useState } from "react";
+
 import { CART_LOCALSTORAGE } from "../constants/constants";
 import { getStorageParse } from "../helpers/localStorage";
-import { iconStar, iconWhiteStar } from "../assets";
 import useLocalStorage from "../hooks/useLocalstorage";
+import { iconStar, iconWhiteStar } from "../assets";
+import { styles } from "../constants/styles";
+import { IProduct } from "../interfaces";
+import { SwiperImageSliders } from ".";
 
 const ProductCard: FC<IProduct> = ({ id, images, title, price }): JSX.Element => {
   const getRandomNumber = (num: number): number => Math.trunc(Math.random()) * num;
@@ -49,10 +50,7 @@ const ProductCard: FC<IProduct> = ({ id, images, title, price }): JSX.Element =>
         <p className="mb-3">
           <span className="tracking-wider text-gray-900">${price}</span>
         </p>
-        <button
-          className={`${styles.buttonYellow} ${styles.focus} ${keys.includes(Number(id)) && "bg-yellow-600"} hover:scale-[1.02]`}
-          onClick={addToCart}
-        >
+        <button className={`${styles.buttonYellow} ${styles.focus} ${keys.includes(Number(id)) && "bg-yellow-600"} hover:scale-[1.02]`} onClick={addToCart}>
           {keys.includes(Number(id)) ? "Added" : "Add to Cart"}
         </button>
       </div>

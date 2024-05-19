@@ -1,12 +1,14 @@
-import { styles } from "../constants/styles";
 import { ChangeEvent, useState } from "react";
-import { IAuthUser, IAxiosResponse, ICustomInput } from "../interfaces";
-import AuthService from "../service/auth";
-import errorToString from "../helpers/errorToString";
 import { Link, useNavigate } from "react-router-dom";
-import { CustomInput, Modal } from "../components";
-import { spinner } from "../assets";
 import { Helmet } from "react-helmet";
+
+import { IAuthUser, IAxiosResponse, ICustomInput } from "../interfaces";
+import errorToString from "../helpers/errorToString";
+import { styles } from "../constants/styles";
+import AuthService from "../service/auth";
+import { spinner } from "../assets";
+
+import { CustomInput, Modal } from "../components";
 
 const Register: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
@@ -78,9 +80,7 @@ const Register: React.FC = (): JSX.Element => {
       </form>
       <Modal handleClose={handleClose} type="notification" isOpen={isOpen}>
         <div className="text-center">
-          <p className="text-green-600 mb-3 font-medium text-sm xs:text-md md:text-lg">
-            You have successfully registered. Please log in to proceed.
-          </p>
+          <p className="text-green-600 mb-3 font-medium text-sm xs:text-md md:text-lg">You have successfully registered. Please log in to proceed.</p>
           <button className={`${styles.buttonGreen} mx-auto`} onClick={() => navigate("/")}>
             Login
           </button>

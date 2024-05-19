@@ -1,9 +1,10 @@
 import { ChangeEvent, FC, useState } from "react";
-import { IProduct, TypeStateSetter } from "../interfaces";
-import { styles } from "../constants/styles";
 import { Link } from "react-router-dom";
-import { iconTrash } from "../assets";
+
+import { IProduct, TypeStateSetter } from "../interfaces";
 import useLocalStorage from "../hooks/useLocalstorage";
+import { styles } from "../constants/styles";
+import { iconTrash } from "../assets";
 interface ICartItem {
   cart: IProduct;
   setCarts: TypeStateSetter;
@@ -36,11 +37,7 @@ const CartItem: FC<ICartItem> = ({ cart, setCarts }): JSX.Element => {
   return (
     <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-4">
       <Link className="flex items-center gap-4" to={`/product/${cart.id}`}>
-        <img
-          className=" w-[68px] xs:w-[28px] md:w-[64px] aspect-square h-auto rounded"
-          src={cart.images && cart?.images[0]}
-          alt={cart.title}
-        />
+        <img className=" w-[68px] xs:w-[28px] md:w-[64px] aspect-square h-auto rounded" src={cart.images && cart?.images[0]} alt={cart.title} />
         <div>
           <h3 className="text-xs md:text-sm font-semibold text-gray-900">{cart.title}</h3>
           <span className="font-medium text-gray-600 inline leading-[0] text-xs md:text-sm">Price: ${cart.price}</span>

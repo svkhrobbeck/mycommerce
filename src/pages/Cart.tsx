@@ -1,21 +1,23 @@
-import { FC, useContext, useState } from "react";
-import { getStorageParse } from "../helpers/localStorage";
-import { CART_LOCALSTORAGE } from "../constants/constants";
-import { IProduct } from "../interfaces";
-import { CartItem, CheckoutModal } from "../components";
-import { styles } from "../constants/styles";
-import { Context } from "../context/Context";
-import { useNavigate } from "react-router-dom";
+import { FC, useState } from "react";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
+
+import { CART_LOCALSTORAGE } from "../constants/constants";
+import { getStorageParse } from "../helpers/localStorage";
+import { useMyContext } from "../context/Context";
+import { styles } from "../constants/styles";
+import { IProduct } from "../interfaces";
+
+import { CartItem, CheckoutModal } from "../components";
 
 const Cart: FC = (): JSX.Element => {
   const navigate = useNavigate();
-  const { setAuth } = useContext(Context);
+  const { setAuth } = useMyContext();
   const [carts, setCarts] = useState<IProduct[]>(getStorageParse(CART_LOCALSTORAGE));
   const total: number = carts.reduce((a, b) => a + (b.count || 0) * (b?.price || 0), 0);
 
   return (
-    <div>
+    <main>
       <section className={`${styles.py} mx-auto max-w-4xl px-4 sm:px-6 lg:px-8`}>
         <Helmet>
           <meta charSet="utf-8" />
@@ -62,7 +64,7 @@ const Cart: FC = (): JSX.Element => {
         </div>
       </section>
       <CheckoutModal total={total} carts={carts} />
-    </div>
+    </main>
   );
 };
 
