@@ -57,7 +57,7 @@ const Register: React.FC = (): JSX.Element => {
         <title>Ecommerce | Register</title>
       </Helmet>
       <section className="h-screen flex items-center justify-center">
-        <div className={`${styles.container} max-w-[800px] py-4 md:py-6`}>
+        <div className={`${styles.container} max-w-[550px] py-4 md:py-6`}>
           <h2 className="text-center text-[26px] md:text-[36px] font-bold mb-4">Register</h2>
           <form onSubmit={handleSubmit}>
             {inputs.map(input => (
