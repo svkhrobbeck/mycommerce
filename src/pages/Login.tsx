@@ -49,7 +49,7 @@ const Login: React.FC = (): JSX.Element => {
 
   return (
     <main>
-      <section>
+      <section className="h-screen flex items-center justify-center">
         <div className={`${styles.container} max-w-[800px] py-4 md:py-6`}>
           <Helmet>
             <meta charSet="utf-8" />
