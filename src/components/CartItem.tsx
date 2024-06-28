@@ -5,6 +5,7 @@ import { IProduct, TypeStateSetter } from "../interfaces";
 import useLocalStorage from "../hooks/useLocalstorage";
 import { styles } from "../constants/styles";
 import { iconTrash } from "../assets";
+
 interface ICartItem {
   cart: IProduct;
   setCarts: TypeStateSetter;

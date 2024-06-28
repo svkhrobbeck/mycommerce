@@ -4,6 +4,7 @@ import { TOKEN_LOCALSTORAGE } from "./constants/constants";
 import { removeStorage } from "./helpers/localStorage";
 import { useMyContext } from "./context/Context";
 import AuthService from "./service/auth";
+
 import "./service/axios";
 
 import { Loader } from "./components";
@@ -16,7 +17,7 @@ const App: FC = (): JSX.Element => {
   const getUser = async () => {
     setIsLoading(true);
     try {
-      if (!!!auth?.token) throw new Error("User not logged in");
+      if (!auth?.token) throw new Error("User not logged in");
       const user = await AuthService.userGet();
       setAuth(prev => ({ ...prev, user }));
     } catch (error) {
@@ -32,7 +33,7 @@ const App: FC = (): JSX.Element => {
     if (auth?.token) getUser();
   }, [auth?.token]);
 
-  return <main>{isLoading ? <Loader /> : <Router />}</main>;
+  return <>{isLoading ? <Loader /> : <Router />}</>;
 };
 
 export default App;
